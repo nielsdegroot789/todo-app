@@ -1,5 +1,5 @@
-import connectDB from "./backend/config/db.js";
-import userRoutes from "./backend/routes/userRoute.js";
+import connectDB from "./config/db.js";
+import userRoutes from "./routes/userRoute.js";
 import express from "express";
 import dotenv from "dotenv";
 
