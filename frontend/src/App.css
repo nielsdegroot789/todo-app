@@ -1,0 +1,36 @@
+.App {
+  text-align: center;
+}
+
+body {
+  color: black;
+  padding: 40px;
+  font-family: Arial;
+  text-align: center;
+}
+
+.map-container {
+  height: 400px;
+}
+
+#notification-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 400px;
+  height: 100px;
+  background-color: beige;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.addForm {
+  display: flex;
+  padding: 20px;
+}
+
+.input {
+  width: auto;
+  height: 25px;
+}
