@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PctInput from "./PctInput";
 import PctTextBox from "./PctTextBox";
 import PctDate from "./PctDate";
+
 import axios from "axios";
 
 const AddEditTodoForm = () => {
@@ -14,7 +15,7 @@ const AddEditTodoForm = () => {
   const onChange = (name, value) => {
     setTodo({ ...todo, [name]: value });
   };
-  console.log(todo);
+
   return (
     <div className="addForm">
       <label for="name">Name:</label>

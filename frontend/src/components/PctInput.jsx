@@ -12,9 +12,7 @@ const PctInput = ({ name, value, onChange, label }) => {
         name={name}
         value={value}
         onChange={(event) => {
-          const obj = { name: event.target.value };
-          console.log(obj);
-          return obj;
+          onChange(name, event.target.value);
         }}
         type="text"
         class=" input inputText"

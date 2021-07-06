@@ -12,7 +12,7 @@ const PctTextBox = ({ name, value, onChange, label }) => {
         name={name}
         value={value}
         onChange={(event) => {
-          return { name: event.target.value };
+          onChange(name, event.target.value);
         }}
         type="textbox"
         class="input inputText"
