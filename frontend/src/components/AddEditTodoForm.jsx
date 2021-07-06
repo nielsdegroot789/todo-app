@@ -2,35 +2,43 @@ import React, { useState } from "react";
 import PctInput from "./PctInput";
 import PctTextBox from "./PctTextBox";
 import PctDate from "./PctDate";
+import axios from "axios";
 
-const AddTodoForm = ({ name, value, state, addTodo, onChange, onSubmit }) => {
+const AddEditTodoForm = () => {
+  const [todo, setTodo] = useState({});
+
+  const submitTodo = () => {
+    axios.post("http://localhost:5000/todos/add", todo);
+  };
+
+  const onChange = (name, value) => {
+    setTodo({ ...todo, [name]: value });
+  };
+  console.log(todo);
   return (
     <div className="addForm">
       <label for="name">Name:</label>
       <PctInput
         name="name"
         label="Todo name"
-        value={state?.name}
+        value={todo?.name}
         onChange={onChange}
-        onSubmit={onSubmit}
       />
       <PctTextBox
         name="description"
         label="Description"
-        value={state?.description}
+        value={todo?.description}
         onChange={onChange}
-        onSubmit={onSubmit}
       />
       <PctDate
-        name="Date"
+        name="date"
         label="Date"
-        value={state?.date}
+        value={todo?.date}
         onChange={onChange}
-        onSubmit={onSubmit}
       />
-      <button onClick={onSubmit}>Add todo</button>
+      <button onClick={submitTodo}>Add todo</button>
     </div>
   );
 };
 
-export default AddTodoForm;
+export default AddEditTodoForm;
