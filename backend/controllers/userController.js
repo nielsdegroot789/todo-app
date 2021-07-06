@@ -2,13 +2,13 @@ import User from "../models/usersModel.js";
 import asyncHandler from "express-async-handler";
 
 //getUsers function to get all users
-export const getUsers = asyncHandler(async (req, res) => {
+const getUsers = asyncHandler(async (req, res) => {
   const users = await User.find({});
   res.json(users);
 });
 
 //getUserById function to retrieve user by id
-export const getUserById = asyncHandler(async (req, res) => {
+const getUserById = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
   console.log(user);
   //if user id match param id send user else throw error
@@ -20,3 +20,5 @@ export const getUserById = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 });
+
+export { getUsers, getUserById };

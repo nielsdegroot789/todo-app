@@ -1,5 +1,6 @@
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoute.js";
+import todoRoutes from "./routes/todoRoutes.js";
 import express from "express";
 import dotenv from "dotenv";
 
@@ -12,7 +13,8 @@ dotenv.config();
 const app = express();
 
 //Creating API for user
-app.use("/api/users", userRoutes);
+app.use("/users", userRoutes);
+app.use("/todo/add", todoRoutes);
 
 const PORT = process.env.PORT || 5000;
 
