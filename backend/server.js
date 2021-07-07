@@ -5,20 +5,23 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 
-//connect database
+// connect database
 connectDB()
 
-//dotenv config
+// dotenv config
 dotenv.config()
 
 const app = express()
+
+// parse json http bodies into javascript objects so req.body is accessible
+app.use(express.json())
+
+// enable cors
 app.use(cors())
 
-//Creating API for user
 app.use('/users', userRoutes)
 app.use('/todos/', todoRoutes)
 
 const PORT = process.env.PORT || 5000
 
-//Express js listen method to run project on http://localhost:5000
 app.listen(PORT, console.log(`App is running in ${process.env.NODE_ENV} mode on port ${PORT}`))
