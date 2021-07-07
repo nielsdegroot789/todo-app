@@ -1,8 +1,9 @@
-// import Todo from "../models/todoModel.js";
+import Todo from '../models/todoModel.js'
 import asyncHandler from 'express-async-handler'
 
 const addTodo = asyncHandler(async (req, res) => {
-  console.log(req.body)
+  const todo = req.body
+  Todo.insertMany(todo)
   res.end()
 })
 
