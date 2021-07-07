@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const Notification = ({ type, title, description, onClose, onMore }) => {
   return (
@@ -7,7 +7,7 @@ const Notification = ({ type, title, description, onClose, onMore }) => {
       {description}
       <button onClick={onClose}>Close</button>
     </div>
-  );
-};
+  )
+}
 
-export default Notification;
+export default Notification

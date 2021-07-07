@@ -9,6 +9,7 @@ const AddEditTodoForm = () => {
   const [todo, setTodo] = useState({})
 
   const submitTodo = () => {
+    console.log(todo)
     axios.post('http://localhost:5000/todos/add', todo)
   }
 
