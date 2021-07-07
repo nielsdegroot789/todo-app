@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const todoSchema = mongoose.Schema({
   name: {
@@ -9,10 +9,10 @@ const todoSchema = mongoose.Schema({
     type: String,
   },
   date: {
-    type: Date,
+    type: String,
   },
-});
+})
 
-const Todo = mongoose.model("Todo", todoSchema);
+const Todo = mongoose.model('Todo', todoSchema)
 
-export default Todo;
+export default Todo

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const PctDate = ({ name, value, onChange, label }) => {
   return (
@@ -11,14 +11,14 @@ const PctDate = ({ name, value, onChange, label }) => {
       <input
         name={name}
         value={value}
-        onChange={(event) => {
-          onChange(name, event.target.value);
+        onChange={event => {
+          onChange(name, event.target.value)
         }}
         type="date"
         class=" input inputDate"
       />
     </>
-  );
-};
+  )
+}
 
-export default PctDate;
+export default PctDate
