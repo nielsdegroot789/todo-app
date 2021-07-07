@@ -9,12 +9,12 @@
   },
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "commonjs": true
   },
   "rules": {
-    "semi": 2,
     "react/no-set-state": "off"
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended", "prettier", "prettier/react"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
   "plugins": ["react", "prettier"]
 }
