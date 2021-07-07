@@ -1,10 +1,22 @@
 import React, { useState } from 'react'
 import AddEditTodoForm from './AddEditTodoForm'
 import SearchBar from '../components/SearchBar'
+import axios from 'axios'
 
 const TodoPage = () => {
   const [filterText, setFilterText] = useState()
-  // make object
+  const [todos, setTodos] = useState()
+
+  const getTodos = async () => {
+    const todos = await axios.get('todos/getTodos')
+    if (todos?.data) {
+      setTodos(todos.data)
+    }
+  }
+
+  if (!todos) {
+    getTodos()
+  }
 
   return (
     <div id="todoPage">
