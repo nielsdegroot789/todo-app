@@ -1,6 +1,6 @@
 import Todo from '../models/todoModel.js'
 import asyncHandler from 'express-async-handler'
-
+// TODO: security checks
 const addTodo = asyncHandler(async (req, res) => {
   const todo = req.body
   Todo.insertMany(todo)
@@ -16,4 +16,16 @@ const getTodos = asyncHandler(async (req, res) => {
   console.log(todos)
   res.json(todos)
 })
-export { addTodo, getTodos }
+
+const deleteTodo = asyncHandler(async (req, res) => {
+  const todoId = req.body
+  Todo.deleteOne(todoId)
+  res.end()
+})
+
+const updateTodo = asyncHandler(async (req, res) => {
+  const { id, ...params } = req.body
+  Todo.updateOne(id, { $set: { ...params } })
+  res.end()
+})
+export { addTodo, getTodos, deleteTodo, updateTodo }
