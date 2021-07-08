@@ -1,30 +1,36 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import useNotify from './useNotify'
 
-axios.defaults.baseURL = 'http://localhost:5000'
+axios.defaults.baseURL = 'http://localhost:5000/'
+//TODO: useAxiosExecute?
+const useAxios = params => {
+  const notify = useNotify()
 
-const useAxios = async ({ method, url, body = null, headers = null }) => {
-  const [response, setResponse] = useState()
+  const [response, setResponse] = useState(null)
   const [error, setError] = useState()
   const [loading, setLoading] = useState(true)
 
-  const fetchData = () => {
-    axios[method](url, JSON.parse(headers), JSON.parse(body))
-      .then(response => {
-        setResponse(response)
-      })
-      .catch(error => {
-        setError(error)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
+  const fetchData = async params => {
+    try {
+      const response = await axios.request(params)
+      setResponse(response.data)
+
+      if (params?.successMessage) {
+        notify({ title: params.successMessage })
+      }
+
+      setLoading(false)
+    } catch (error) {
+      setError(error)
+      notify({ title: params.errorMessage || 'oops, something went wrong!' })
+    }
   }
 
   useEffect(() => {
-    fetchData()
-  }, [method, url, body, headers])
+    fetchData(params)
+  }, [])
 
-  return { response, error, loading }
+  return { response, error, loading, execute }
 }
 export default useAxios
