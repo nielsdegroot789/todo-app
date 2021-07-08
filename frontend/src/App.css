@@ -45,7 +45,7 @@ body {
   margin: 1rem 0 0 1rem;
 }
 
-#todo-page {
+.page-layout {
   margin-left: auto;
   margin-right: auto;
   width: 80%;
