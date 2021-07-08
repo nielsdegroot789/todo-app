@@ -8,7 +8,7 @@ const TodoPage = () => {
   const [filterText, setFilterText] = useState()
   const [todos, setTodos] = useState()
   // TODO: spinner
-  const { response, loading, execute } = useAxios({
+  const { response, loading } = useAxios({
     method: 'get',
     url: 'todos/getTodos',
   })
