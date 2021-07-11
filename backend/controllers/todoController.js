@@ -3,7 +3,7 @@ import asyncHandler from 'express-async-handler'
 // TODO: security checks
 const addTodo = asyncHandler(async (req, res) => {
   const todo = req.body
-  Todo.insertMany(todo)
+  await Todo.insertMany(todo)
   res.end()
 })
 
@@ -13,19 +13,27 @@ const getTodos = asyncHandler(async (req, res) => {
     res.status(404).json({ message: 'Todos not found' })
     throw new Error('Todos not found')
   }
-  console.log(todos)
   res.json(todos)
 })
 
 const deleteTodo = asyncHandler(async (req, res) => {
   const todoId = req.body
-  Todo.deleteOne(todoId)
+  if (!todoId) {
+    res.status(404)
+    throw new Error('id not found')
+  }
+  await Todo.deleteOne(todoId)
   res.end()
 })
 
 const updateTodo = asyncHandler(async (req, res) => {
-  const { id, ...params } = req.body
-  Todo.updateOne(id, { $set: { ...params } })
+  const data = req.body
+  if (!data?._id) {
+    res.status(404)
+    throw new Error('id not found')
+  }
+
+  // Todo.updateOne(data._id, { $set: { ...params } })
   res.end()
 })
 export { addTodo, getTodos, deleteTodo, updateTodo }
