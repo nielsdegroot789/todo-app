@@ -4,18 +4,28 @@ import PctTextBox from './PctTextBox'
 import PctDate from './PctDate'
 import useAxios from '../hooks/useAxios'
 
-// TODO: make sure useaxios gets rightky implemented
-const AddEditTodoForm = () => {
+const AddEditTodoForm = ({ refresh }) => {
   const [todo, setTodo] = useState({})
 
-  //  ` const { response } = useAxios({
-  //     method: 'post',
-  //     data: todo,
-  //     successMessage: 'Successfully added todo',
-  //   })`
+  const axiosConfig = {
+    method: 'post',
+    url: 'todos/add',
+    data: todo,
+    successMessage: 'Successfully added todo',
+  }
+
+  const { execute } = useAxios({
+    axiosConfig,
+    manualCancel: true,
+  })
 
   const onChange = (name, value) => {
     setTodo({ ...todo, [name]: value })
+  }
+
+  const submitTodo = async () => {
+    await execute()
+    await refresh()
   }
 
   return (
@@ -29,7 +39,7 @@ const AddEditTodoForm = () => {
         onChange={onChange}
       />
       <PctDate name="dueDate" label="Due date" value={todo?.date} onChange={onChange} />
-      <button>Add todo</button>
+      <button onClick={submitTodo}>Add todo</button>
     </div>
   )
 }

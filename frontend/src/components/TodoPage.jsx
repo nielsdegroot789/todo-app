@@ -8,10 +8,8 @@ const TodoPage = () => {
   const [filterText, setFilterText] = useState()
   const [todos, setTodos] = useState()
   // TODO: spinner
-  const { response, loading } = useAxios({
-    method: 'get',
-    url: 'todos/getTodos',
-  })
+  const axiosConfig = { method: 'get', url: 'todos/getTodos' }
+  const { response, loading, execute } = useAxios({ axiosConfig })
 
   useEffect(() => {
     if (response) {
@@ -23,7 +21,7 @@ const TodoPage = () => {
     <div class="page-layout">
       <h1>Todos</h1>
       <SearchBar setFilterText={e => setFilterText(e)} />
-      <AddEditTodoForm />
+      <AddEditTodoForm refresh={execute} />
       <div id="todo-container">
         {loading ? <p>Loading...</p> : todos.map(todo => <Todo todo={todo} />)}
       </div>

@@ -3,32 +3,37 @@ import { useEffect, useState } from 'react'
 import useNotify from './useNotify'
 
 axios.defaults.baseURL = 'http://localhost:5000/'
-//TODO: useAxiosExecute?
-const useAxios = params => {
-  const notify = useNotify()
 
+const useAxios = ({ axiosConfig = {}, manualCancel, successMessage, errorMessage }) => {
+  const notify = useNotify()
   const [response, setResponse] = useState(null)
   const [error, setError] = useState()
   const [loading, setLoading] = useState(true)
 
-  const fetchData = async params => {
+  const fetchData = async axiosConfig => {
     try {
-      const response = await axios.request(params)
+      const response = await axios.request(axiosConfig)
       setResponse(response.data)
 
-      if (params?.successMessage) {
-        notify({ title: params.successMessage })
+      if (successMessage) {
+        notify({ title: successMessage })
       }
 
       setLoading(false)
     } catch (error) {
       setError(error)
-      notify({ title: params.errorMessage || 'oops, something went wrong!' })
+      notify({ title: errorMessage || 'oops, something went wrong!' })
     }
   }
 
+  const execute = () => {
+    fetchData(axiosConfig)
+  }
+
   useEffect(() => {
-    fetchData(params)
+    if (!manualCancel) {
+      fetchData(axiosConfig)
+    }
   }, [])
 
   return { response, error, loading, execute }
