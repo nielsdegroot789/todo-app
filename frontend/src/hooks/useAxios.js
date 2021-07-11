@@ -4,7 +4,13 @@ import useNotify from './useNotify'
 
 axios.defaults.baseURL = 'http://localhost:5000/'
 
-const useAxios = ({ axiosConfig = {}, manualCancel, successMessage, errorMessage }) => {
+const useAxios = ({
+  axiosConfig = {},
+  manualCancel,
+  successMessage,
+  errorMessage,
+  successFunction = () => {},
+}) => {
   const notify = useNotify()
   const [response, setResponse] = useState(null)
   const [error, setError] = useState()
@@ -15,6 +21,7 @@ const useAxios = ({ axiosConfig = {}, manualCancel, successMessage, errorMessage
       const response = await axios.request(axiosConfig)
       setResponse(response.data)
 
+      await successFunction()
       if (successMessage) {
         notify({ title: successMessage })
       }
