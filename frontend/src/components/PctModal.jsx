@@ -6,16 +6,13 @@ const PctModal = ({ title, description, isVisible = false, children, onClose, ex
   }
 
   return (
-    <div onClick={onClose} class="modal">
-      <div class="modal-content">
+    <div className="modal-container" onClick={onClose}>
+      <div className="modal-content" onClick={e => e.stopPropagation()}>
         <div class="modal-header">
-          <span class="close-modal-icon" onClick={onClose}>
-            &times;
-          </span>
-          {title}
+          <span className="close-modal-icon">&times;</span>
         </div>
         <div id="modal-children-container">{children}</div>
-        <div class="modal-footer">
+        <div className="modal-footer">
           <button onClick={onClose}>Cancel</button>
           {extra}
         </div>

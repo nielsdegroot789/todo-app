@@ -9,9 +9,10 @@ const EditTodoModal = ({ isVisible, onClose, todoId, refresh }) => {
     url: 'todos/edit',
     data: {},
   })
+
   return (
     <PctModal isVisible={isVisible} onClose={onClose}>
-      <TodoForm />
+      <TodoForm onClose={onClose} />
     </PctModal>
   )
 }
