@@ -4,7 +4,7 @@ import PctTextBox from './PctTextBox'
 import PctDate from './PctDate'
 import useAxios from '../hooks/useAxios'
 
-const AddEditTodoForm = ({ refresh }) => {
+const TodoForm = ({ refresh }) => {
   const [todo, setTodo] = useState({})
 
   const { execute } = useAxios({
@@ -38,4 +38,4 @@ const AddEditTodoForm = ({ refresh }) => {
   )
 }
 
-export default AddEditTodoForm
+export default TodoForm
