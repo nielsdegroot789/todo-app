@@ -9,7 +9,9 @@ const PctModal = ({ title, description, isVisible = false, children, onClose, ex
     <div className="modal-container" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
         <div class="modal-header">
-          <span className="close-modal-icon">&times;</span>
+          <span className="close-modal-icon" onClick={onClose}>
+            &times;
+          </span>
         </div>
         <div id="modal-children-container">{children}</div>
         <div className="modal-footer">

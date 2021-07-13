@@ -10,7 +10,10 @@ const DeleteTodoModal = ({ isVisible, onClose, todoId, refresh }) => {
       data: { _id: todoId },
     },
     successMessage: 'Todo successfully deleted',
-    successFunction: refresh,
+    successFunction: () => {
+      refresh()
+      onClose()
+    },
     manualCancel: true,
   })
 

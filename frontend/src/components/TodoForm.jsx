@@ -33,6 +33,7 @@ const TodoForm = ({ refresh }) => {
         onChange={onChange}
       />
       <PctDate name="dueDate" label="Due date" value={todo?.date} onChange={onChange} />
+      {/* outside of component, perhaps hook? */}
       <button onClick={execute}>Add todo</button>
     </div>
   )
