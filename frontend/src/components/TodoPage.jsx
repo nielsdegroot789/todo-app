@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import AddEditTodoForm from './TodoForm'
 import SearchBar from '../components/SearchBar'
 import Todo from '../components/Todo'
-import useAxios from '../hooks/useAxios'
 import DeleteTodoModal from './DeleteTodoModal'
-import useToggle from '../hooks/useToggle'
 import TodoForm from './TodoForm'
 import EditTodoModal from './EditTodoModal'
+import useAxiosInit from '../hooks/useAxiosInit'
 
 const TodoPage = () => {
   const [filterText, setFilterText] = useState()
@@ -14,7 +12,7 @@ const TodoPage = () => {
   const [deleteId, setDeleteId] = useState()
   const [editId, setEditId] = useState()
   // TODO: spinner
-  const { response, loading, execute } = useAxios({
+  const { response, loading, execute } = useAxiosInit({
     axiosConfig: { method: 'get', url: 'todos/getTodos' },
   })
 

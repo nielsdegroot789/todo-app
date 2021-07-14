@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import PctInput from './PctInput'
 import PctTextBox from './PctTextBox'
 import PctDate from './PctDate'
-import useAxios from '../hooks/useAxios'
+import useAxiosManual from '../hooks/useAxiosManual'
 
 const TodoForm = ({ refresh }) => {
   const [todo, setTodo] = useState({})
 
-  const { execute } = useAxios({
+  const { execute } = useAxiosManual({
     axiosConfig: {
       method: 'post',
       url: 'todos/add',
@@ -15,7 +15,6 @@ const TodoForm = ({ refresh }) => {
     },
     successMessage: 'Successfully added todo',
     successFunction: refresh,
-    manualCancel: true,
   })
 
   const onChange = (name, value) => {

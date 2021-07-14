@@ -1,10 +1,10 @@
 import React from 'react'
-import useAxios from '../hooks/useAxios'
+import useAxiosManual from '../hooks/useAxiosManual'
 import PctModal from './PctModal'
 import TodoForm from './TodoForm'
 
 const EditTodoModal = ({ isVisible, onClose, todoId, refresh }) => {
-  const { execute } = useAxios({
+  const { execute } = useAxiosManual({
     method: 'put',
     url: 'todos/edit',
     data: {},

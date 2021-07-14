@@ -1,9 +1,9 @@
 import React from 'react'
-import useAxios from '../hooks/useAxios'
+import useAxiosManual from '../hooks/useAxiosManual'
 import PctModal from './PctModal'
 
 const DeleteTodoModal = ({ isVisible, onClose, todoId, refresh }) => {
-  const { execute } = useAxios({
+  const { execute } = useAxiosManual({
     axiosConfig: {
       method: 'delete',
       url: 'todos/delete',
@@ -14,7 +14,6 @@ const DeleteTodoModal = ({ isVisible, onClose, todoId, refresh }) => {
       refresh()
       onClose()
     },
-    manualCancel: true,
   })
 
   return (
