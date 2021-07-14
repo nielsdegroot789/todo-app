@@ -17,7 +17,12 @@ const useAxiosInit = ({
   useEffect(() => {
     executeAxios(axiosConfig)
   }, [])
+  // Don't know if this is better since there are cases that will be initted and manually...
+  // TODO: check when this hook renders, if it renders too much, maybe useCallback?
+  const execute = () => {
+    executeAxios(axiosConfig)
+  }
 
-  return { response, loading }
+  return { response, loading, execute }
 }
 export default useAxiosInit

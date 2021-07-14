@@ -21,7 +21,7 @@ const useAxiosCore = ({
     try {
       const response = await axios.request(axiosConfig)
       setResponse(response.data)
-
+      console.log(successFunction)
       await successFunction()
       if (successMessage) {
         notify({ title: successMessage })

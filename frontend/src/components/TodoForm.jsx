@@ -6,7 +6,7 @@ import useAxiosManual from '../hooks/useAxiosManual'
 
 const TodoForm = ({ refresh }) => {
   const [todo, setTodo] = useState({})
-
+  console.log(refresh)
   const { execute } = useAxiosManual({
     axiosConfig: {
       method: 'post',
