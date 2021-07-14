@@ -3,16 +3,14 @@ import useAxiosManual from '../hooks/useAxiosManual'
 import PctModal from './PctModal'
 import TodoForm from './TodoForm'
 
-const EditTodoModal = ({ isVisible, onClose, todoId, refresh }) => {
+const EditTodoModal = ({ isVisible, onClose, todoId, refresh, onChange }) => {
   const { execute } = useAxiosManual({
-    method: 'put',
-    url: 'todos/edit',
-    data: {},
+    axiosConfig: { method: 'put', url: 'todos/edit', data: {} },
   })
 
   return (
     <PctModal isVisible={isVisible} onClose={onClose}>
-      <TodoForm onClose={onClose} />
+      <TodoForm onClose={onClose} onChange={onChange} onSubmit={execute} />
     </PctModal>
   )
 }
