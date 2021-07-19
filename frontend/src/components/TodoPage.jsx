@@ -25,15 +25,27 @@ const TodoPage = () => {
       data: todo,
     },
     successMessage: 'Successfully added todo',
-    successFunction: execute,
   })
 
+  const { response: fetchedTodo, execute: fetchTodo } = useAxiosManual({
+    axiosConfig: {
+      method: 'get',
+      url: 'todos/fetch',
+      data: todo,
+    },
+  })
   useEffect(() => {
     if (response) {
       setTodos(response)
     }
   }, [response])
-
+  // can be a lot cleaner!!
+  useEffect(() => {
+    if (editId) {
+      fetchTodo()
+      setTodo(fetchedTodo)
+    }
+  }, [editId])
   const onChange = (name, value) => {
     setTodo({ ...todo, [name]: value })
   }

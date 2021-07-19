@@ -14,6 +14,7 @@ const getTodos = asyncHandler(async (req, res) => {
     throw new Error('Todos not found')
   }
   res.json(todos)
+  res.end()
 })
 
 const deleteTodo = asyncHandler(async (req, res) => {
@@ -36,4 +37,17 @@ const updateTodo = asyncHandler(async (req, res) => {
   // Todo.updateOne(data._id, { $set: { ...params } })
   res.end()
 })
-export { addTodo, getTodos, deleteTodo, updateTodo }
+
+const fetchTodo = asyncHandler(async (req, res) => {
+  const data = req.body
+
+  if (!data?._id) {
+    res.status(404)
+    throw new Error('id not found')
+  }
+
+  const todo = await Todo.findOne(data._id)
+  res.end()
+  return todo
+})
+export { addTodo, getTodos, deleteTodo, updateTodo, fetchTodo }
