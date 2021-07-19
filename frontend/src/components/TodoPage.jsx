@@ -35,7 +35,7 @@ const TodoPage = () => {
   }, [response])
 
   const onChange = (name, value) => {
-    setTodos({ ...todo, [name]: value })
+    setTodo({ ...todo, [name]: value })
   }
   return (
     <div class="page-layout">
@@ -46,7 +46,7 @@ const TodoPage = () => {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          todos.map(todo => <Todo todo={todo} setEditId={setEditId} setDeleteId={setDeleteId} />)
+          todos?.map(todo => <Todo todo={todo} setEditId={setEditId} setDeleteId={setDeleteId} />)
         )}
       </div>
       <EditTodoModal
