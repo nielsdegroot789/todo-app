@@ -11,8 +11,8 @@ const TodoPage = () => {
   const [filterText, setFilterText] = useState()
   const [todos, setTodos] = useState()
   const [todo, setTodo] = useState()
+  const [editTodo, setEditTodo] = useState()
   const [deleteId, setDeleteId] = useState()
-  const [editId, setEditId] = useState()
   // TODO: spinner
   const { response, loading, execute } = useAxiosInit({
     axiosConfig: { method: 'get', url: 'todos/getTodos' },
@@ -27,45 +27,33 @@ const TodoPage = () => {
     successMessage: 'Successfully added todo',
   })
 
-  const { response: fetchedTodo, execute: fetchTodo } = useAxiosManual({
-    axiosConfig: {
-      method: 'get',
-      url: 'todos/fetch',
-      data: todo,
-    },
-  })
   useEffect(() => {
     if (response) {
       setTodos(response)
     }
   }, [response])
-  // can be a lot cleaner!!
-  useEffect(() => {
-    if (editId) {
-      fetchTodo()
-      setTodo(fetchedTodo)
-    }
-  }, [editId])
-  const onChange = (name, value) => {
-    setTodo({ ...todo, [name]: value })
+
+  const onChangeEdit = (name, value) => {
+    setTodos({ ...todo, [name]: value })
   }
   return (
     <div class="page-layout">
       <h1>Todos</h1>
       <SearchBar setFilterText={e => setFilterText(e)} />
-      <TodoForm refresh={execute} onChange={onChange} onSubmit={addTodo} state={todo} />
+      <TodoForm refresh={execute} onSubmit={addTodo} state={todo} />
       <div id="todo-container">
         {loading ? (
           <p>Loading...</p>
         ) : (
-          todos?.map(todo => <Todo todo={todo} setEditId={setEditId} setDeleteId={setDeleteId} />)
+          todos?.map(todo => (
+            <Todo todo={todo} setEditTodo={setEditTodo} setDeleteId={setDeleteId} />
+          ))
         )}
       </div>
       <EditTodoModal
-        isVisible={editId}
-        onChange={onChange}
-        onClose={() => setEditId()}
-        todoId={editId}
+        isVisible={editTodo}
+        onClose={() => setEditTodo(null)}
+        editTodo={editTodo}
         refresh={execute}
       />
       <DeleteTodoModal

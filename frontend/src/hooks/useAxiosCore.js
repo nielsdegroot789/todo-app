@@ -8,7 +8,6 @@ const useAxiosCore = ({
   errorMessage,
   successFunction = () => {},
 }) => {
-  console.log(axiosConfig, successFunction)
   const [response, setResponse] = useState(null)
   const [error, setError] = useState()
   const [loading, setLoading] = useState(true)

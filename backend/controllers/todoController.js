@@ -47,6 +47,7 @@ const fetchTodo = asyncHandler(async (req, res) => {
   }
 
   const todo = await Todo.findOne(data._id)
+
   res.end()
   return todo
 })

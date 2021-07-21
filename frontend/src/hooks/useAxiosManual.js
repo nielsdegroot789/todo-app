@@ -6,7 +6,6 @@ const useAxiosManual = ({
   errorMessage,
   successFunction = () => {},
 }) => {
-  console.log(successFunction)
   const { response, error, loading, executeAxios } = useAxiosCore({
     axiosConfig,
     successMessage,
