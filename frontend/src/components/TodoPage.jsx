@@ -10,11 +10,11 @@ import useAxiosManual from '../hooks/useAxiosManual'
 const TodoPage = () => {
   const [filterText, setFilterText] = useState()
   const [todos, setTodos] = useState()
-  const [todo, setTodo] = useState()
+  const [todo, setTodo] = useState({})
   const [editTodo, setEditTodo] = useState()
   const [deleteId, setDeleteId] = useState()
   // TODO: spinner
-  const { response, loading, execute } = useAxiosInit({
+  const { response, loading, refresh } = useAxiosInit({
     axiosConfig: { method: 'get', url: 'todos/getTodos' },
   })
 
@@ -25,6 +25,7 @@ const TodoPage = () => {
       data: todo,
     },
     successMessage: 'Successfully added todo',
+    successFunction: refresh,
   })
 
   useEffect(() => {
@@ -33,14 +34,19 @@ const TodoPage = () => {
     }
   }, [response])
 
-  const onChangeEdit = (name, value) => {
-    setTodos({ ...todo, [name]: value })
+  const onChangeTodo = (name, value) => {
+    setTodo({ ...todo, [name]: value })
   }
+
+  const onChangeEditTodo = (name, value) => {
+    setEditTodo({ ...editTodo, [name]: value })
+  }
+  console.log(editTodo)
   return (
     <div class="page-layout">
       <h1>Todos</h1>
       <SearchBar setFilterText={e => setFilterText(e)} />
-      <TodoForm refresh={execute} onSubmit={addTodo} state={todo} />
+      <TodoForm onSubmit={addTodo} state={todo} onChange={onChangeTodo} />
       <div id="todo-container">
         {loading ? (
           <p>Loading...</p>
@@ -54,13 +60,14 @@ const TodoPage = () => {
         isVisible={editTodo}
         onClose={() => setEditTodo(null)}
         editTodo={editTodo}
-        refresh={execute}
+        refresh={refresh}
+        onChange={onChangeEditTodo}
       />
       <DeleteTodoModal
         isVisible={deleteId}
         onClose={() => setDeleteId(null)}
         todoId={deleteId}
-        refresh={execute}
+        refresh={refresh}
       />
     </div>
   )

@@ -13,8 +13,8 @@ const useAxiosManual = ({
     successFunction,
   })
 
-  const execute = () => {
-    executeAxios(axiosConfig)
+  const execute = async () => {
+    await executeAxios(axiosConfig)
   }
   return { response, error, loading, execute }
 }

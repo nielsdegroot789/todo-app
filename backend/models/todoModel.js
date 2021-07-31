@@ -5,7 +5,7 @@ const todoSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  descsription: {
+  description: {
     type: String,
   },
   date: {

@@ -15,12 +15,12 @@ const useAxiosCore = ({
   axios.defaults.baseURL = 'http://localhost:5000/'
 
   const notify = useNotify()
-  console.log(axiosConfig)
+
   const executeAxios = async axiosConfig => {
     try {
       const response = await axios.request(axiosConfig)
       setResponse(response.data)
-      console.log(successFunction)
+
       await successFunction()
       if (successMessage) {
         notify({ title: successMessage })

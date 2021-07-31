@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PctInput from './PctInput'
 import PctTextBox from './PctTextBox'
 import PctDate from './PctDate'
 
-const TodoForm = ({ refresh, onSubmit, onChange, state }) => {
+const TodoForm = ({ onSubmit, onChange, state }) => {
   return (
     <div className="form">
       <label for="name">Name:</label>
@@ -15,8 +15,7 @@ const TodoForm = ({ refresh, onSubmit, onChange, state }) => {
         onChange={onChange}
       />
       <PctDate name="dueDate" label="Due date" value={state?.date} onChange={onChange} />
-      {/* outside of component, perhaps hook? */}
-      <button onClick={onSubmit}>Add todo</button>
+      <button onClick={onSubmit}>{state?._id ? 'Edit todo' : 'Add todo'}</button>
     </div>
   )
 }

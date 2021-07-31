@@ -29,12 +29,19 @@ const deleteTodo = asyncHandler(async (req, res) => {
 
 const updateTodo = asyncHandler(async (req, res) => {
   const data = req.body
+
   if (!data?._id) {
     res.status(404)
     throw new Error('id not found')
   }
 
-  // Todo.updateOne(data._id, { $set: { ...params } })
+  const todo = await Todo.findOne({ _id: data._id }).exec()
+
+  todo.name = data?.name
+  todo.description = data?.description
+  todo.dueDate = data?.dueDate
+
+  await todo.save()
   res.end()
 })
 
