@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SearchBar = ({ setFilterText }) => {
+const SearchInput = ({ setFilterText }) => {
   return (
     <div>
       <label for="searchString">search todo</label>
@@ -8,6 +8,7 @@ const SearchBar = ({ setFilterText }) => {
         name="searchString"
         for="searchString"
         onChange={e => {
+          console.log('triggered', e.target.value)
           setFilterText(e.target.value)
         }}
       />
@@ -15,4 +16,4 @@ const SearchBar = ({ setFilterText }) => {
   )
 }
 
-export default SearchBar
+export default SearchInput

@@ -23,7 +23,7 @@ const getTodos = asyncHandler(async (req, res) => {
     throw new Error('Todos not found')
   }
 
-  res.json(todos)
+  res.send(todos)
   res.end()
 })
 
@@ -33,6 +33,7 @@ const deleteTodo = asyncHandler(async (req, res) => {
     res.status(404)
     throw new Error('id not found')
   }
+
   await Todo.deleteOne(todoId)
   res.end()
 })

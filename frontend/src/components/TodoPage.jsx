@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import SearchBar from '../components/SearchBar'
+import SearchInput from './SearchInput'
 import Todo from '../components/Todo'
 import DeleteTodoModal from './DeleteTodoModal'
 import TodoForm from './TodoForm'
@@ -47,16 +47,13 @@ const TodoPage = () => {
   }
 
   useEffect(() => {
-    if (!searchText) {
-      return null
-    }
     refresh()
   }, [searchText])
 
   return (
     <div class="page-layout">
       <h1>Todos</h1>
-      <SearchBar setFilterText={search} />
+      <SearchInput setFilterText={search} />
       <TodoForm onSubmit={addTodo} state={todo} onChange={onChangeTodo} />
       <div id="todo-container">
         {loading ? (
