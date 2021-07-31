@@ -8,8 +8,8 @@ const todoSchema = mongoose.Schema({
   description: {
     type: String,
   },
-  date: {
-    type: String,
+  dueDate: {
+    type: Date,
   },
 })
 

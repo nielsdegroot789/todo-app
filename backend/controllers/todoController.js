@@ -1,9 +1,11 @@
 import Todo from '../models/todoModel.js'
 import asyncHandler from 'express-async-handler'
-// TODO: security checks
+
 const addTodo = asyncHandler(async (req, res) => {
   const todo = req.body
-  await Todo.insertMany(todo)
+
+  const newTodo = new Todo(todo)
+  await newTodo.save()
   res.end()
 })
 

@@ -1,6 +1,13 @@
 import React from 'react'
 
 const PctDate = ({ name, value, onChange, label }) => {
+  console.log(value)
+  const toDateString = value => {
+    if (!value) {
+      return null
+    }
+    return value.substring(0, 10)
+  }
   return (
     <>
       {label && (
@@ -10,7 +17,7 @@ const PctDate = ({ name, value, onChange, label }) => {
       )}
       <input
         name={name}
-        value={value}
+        value={toDateString(value)}
         onChange={event => {
           onChange(name, event.target.value)
         }}

@@ -14,7 +14,7 @@ const TodoForm = ({ onSubmit, onChange, state }) => {
         value={state?.description}
         onChange={onChange}
       />
-      <PctDate name="dueDate" label="Due date" value={state?.date} onChange={onChange} />
+      <PctDate name="dueDate" label="Due date" value={state?.dueDate} onChange={onChange} />
       <button onClick={onSubmit}>{state?._id ? 'Edit todo' : 'Add todo'}</button>
     </div>
   )

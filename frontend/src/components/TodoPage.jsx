@@ -52,7 +52,7 @@ const TodoPage = () => {
           <p>Loading...</p>
         ) : (
           todos?.map(todo => (
-            <Todo todo={todo} setEditTodo={setEditTodo} setDeleteId={setDeleteId} />
+            <Todo todo={todo} key={todo._id} setEditTodo={setEditTodo} setDeleteId={setDeleteId} />
           ))
         )}
       </div>
