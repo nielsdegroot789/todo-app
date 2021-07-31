@@ -1,8 +1,6 @@
-import React from "react";
-import { NotificationContext } from "../notification/NotificationProvider";
+import { useContext } from 'react'
+import { NotificationContext } from '../notification/NotificationProvider'
 
-function useNotify() {
-  return React.useContext(NotificationContext);
-}
+const useNotify = () => useContext(NotificationContext)
 
-export default useNotify;
+export default useNotify

@@ -1,23 +1,27 @@
-import connectDB from "./config/db.js";
-import userRoutes from "./routes/userRoute.js";
-import express from "express";
-import dotenv from "dotenv";
+import connectDB from './config/db.js'
+import userRoutes from './routes/userRoute.js'
+import todoRoutes from './routes/todoRoutes.js'
+import express from 'express'
+import dotenv from 'dotenv'
+import cors from 'cors'
 
-//connect database
-connectDB();
+// connect database
+connectDB()
 
-//dotenv config
-dotenv.config();
+// dotenv config
+dotenv.config()
 
-const app = express();
+const app = express()
 
-//Creating API for user
-app.use("/api/users", userRoutes);
+// parse json http bodies into javascript objects so req.body is accessible
+app.use(express.json())
 
-const PORT = process.env.PORT || 5000;
+// enable cors
+app.use(cors())
 
-//Express js listen method to run project on http://localhost:5000
-app.listen(
-  PORT,
-  console.log(`App is running in ${process.env.NODE_ENV} mode on port ${PORT}`)
-);
+app.use('/users', userRoutes)
+app.use('/todos/', todoRoutes)
+
+const PORT = process.env.PORT || 5000
+
+app.listen(PORT, console.log(`App is running in ${process.env.NODE_ENV} mode on port ${PORT}`))
