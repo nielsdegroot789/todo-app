@@ -8,14 +8,14 @@ import useAxiosInit from '../hooks/useAxiosInit'
 import useAxiosManual from '../hooks/useAxiosManual'
 
 const TodoPage = () => {
-  const [filterText, setFilterText] = useState()
+  const [searchText, setSearchText] = useState()
   const [todos, setTodos] = useState()
   const [todo, setTodo] = useState({})
   const [editTodo, setEditTodo] = useState()
   const [deleteId, setDeleteId] = useState()
   // TODO: spinner
   const { response, loading, refresh } = useAxiosInit({
-    axiosConfig: { method: 'get', url: 'todos/getTodos' },
+    axiosConfig: { method: 'get', url: 'todos/getTodos', params: { search: searchText } },
   })
 
   const { execute: addTodo } = useAxiosManual({
@@ -41,11 +41,22 @@ const TodoPage = () => {
   const onChangeEditTodo = (name, value) => {
     setEditTodo({ ...editTodo, [name]: value })
   }
-  console.log(editTodo)
+
+  const search = searchText => {
+    setSearchText(searchText)
+  }
+
+  useEffect(() => {
+    if (!searchText) {
+      return null
+    }
+    refresh()
+  }, [searchText])
+
   return (
     <div class="page-layout">
       <h1>Todos</h1>
-      <SearchBar setFilterText={e => setFilterText(e)} />
+      <SearchBar setFilterText={search} />
       <TodoForm onSubmit={addTodo} state={todo} onChange={onChangeTodo} />
       <div id="todo-container">
         {loading ? (

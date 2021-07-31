@@ -10,11 +10,19 @@ const addTodo = asyncHandler(async (req, res) => {
 })
 
 const getTodos = asyncHandler(async (req, res) => {
-  const todos = await Todo.find({})
+  const filter = {}
+  const query = req.query
+
+  if (query?.search) {
+    filter.name = new RegExp(`^${query.search}`, 'i')
+  }
+
+  const todos = await Todo.find(filter)
   if (!todos) {
     res.status(404).json({ message: 'Todos not found' })
     throw new Error('Todos not found')
   }
+
   res.json(todos)
   res.end()
 })

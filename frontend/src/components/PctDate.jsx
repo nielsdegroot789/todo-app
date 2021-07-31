@@ -1,7 +1,6 @@
 import React from 'react'
 
 const PctDate = ({ name, value, onChange, label }) => {
-  console.log(value)
   const toDateString = value => {
     if (!value) {
       return null
