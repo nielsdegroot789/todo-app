@@ -1,7 +1,6 @@
 import React from 'react'
 import PctInput from './PctInput'
 import PctTextBox from './PctTextBox'
-import PctDate from './PctDate'
 
 const StuffForm = ({ onSubmit, onChange, state }) => {
   return (
@@ -14,7 +13,6 @@ const StuffForm = ({ onSubmit, onChange, state }) => {
         value={state?.description}
         onChange={onChange}
       />
-      <PctDate name="dueDate" label="Due date" value={state?.dueDate} onChange={onChange} />
       <button onClick={onSubmit}>{state?._id ? 'Edit stuff' : 'Add stuff'}</button>
     </div>
   )

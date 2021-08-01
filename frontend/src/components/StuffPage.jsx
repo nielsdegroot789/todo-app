@@ -6,22 +6,25 @@ import StuffForm from './StuffForm'
 import EditStuffModal from './EditStuffModal'
 import useAxiosInit from '../hooks/useAxiosInit'
 import useAxiosManual from '../hooks/useAxiosManual'
+import ActionableModal from './stuff/ActionableModal'
 
 const StuffPage = () => {
   const [searchText, setSearchText] = useState()
-  const [todos, setStuffs] = useState()
   const [stuff, setStuff] = useState({})
+  const [stuffs, setStuffs] = useState()
   const [editStuff, setEditStuff] = useState()
   const [deleteId, setDeleteId] = useState()
+  const [actionable, setActionable] = useState()
+
   // TODO: spinner
   const { response, loading, refresh } = useAxiosInit({
-    axiosConfig: { method: 'get', url: 'todos/getStuffs', params: { search: searchText } },
+    axiosConfig: { method: 'get', url: 'stuffs/getStuffs', params: { search: searchText } },
   })
 
   const { execute: addStuff } = useAxiosManual({
     axiosConfig: {
       method: 'post',
-      url: 'todos/add',
+      url: 'stuffs/add',
       data: stuff,
     },
     successMessage: 'Successfully added stuff',
@@ -52,17 +55,18 @@ const StuffPage = () => {
 
   return (
     <div class="page-layout">
-      <h1>Stuffs</h1>
+      <h1>Stuff</h1>
       <SearchInput setFilterText={search} />
       <StuffForm onSubmit={addStuff} state={stuff} onChange={onChangeStuff} />
       <div id="stuff-container">
         {loading ? (
           <p>Loading...</p>
         ) : (
-          todos?.map(stuff => (
+          stuffs?.map(stuff => (
             <Stuff
               stuff={stuff}
               key={stuff._id}
+              setActionable={setActionable}
               setEditStuff={setEditStuff}
               setDeleteId={setDeleteId}
             />
@@ -80,6 +84,12 @@ const StuffPage = () => {
         isVisible={deleteId}
         onClose={() => setDeleteId(null)}
         todoId={deleteId}
+        refresh={refresh}
+      />
+      <ActionableModal
+        isVisible={actionable}
+        stuffId={actionable}
+        onClose={() => setActionable(null)}
         refresh={refresh}
       />
     </div>

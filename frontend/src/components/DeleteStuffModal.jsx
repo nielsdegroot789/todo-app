@@ -6,7 +6,7 @@ const DeleteStuffModal = ({ isVisible, onClose, todoId, refresh }) => {
   const { execute } = useAxiosManual({
     axiosConfig: {
       method: 'delete',
-      url: 'todos/delete',
+      url: 'stuffs/delete',
       data: { _id: todoId },
     },
     successMessage: 'Stuff successfully deleted',
@@ -15,7 +15,7 @@ const DeleteStuffModal = ({ isVisible, onClose, todoId, refresh }) => {
       onClose()
     },
   })
-
+  console.log(todoId)
   return (
     <PctModal
       title="Delete stuff"

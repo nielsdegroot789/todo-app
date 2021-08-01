@@ -20,7 +20,7 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/users', userRoutes)
-app.use('/todos/', stuffRoutes)
+app.use('/stuffs/', stuffRoutes)
 
 const PORT = process.env.PORT || 5000
 
