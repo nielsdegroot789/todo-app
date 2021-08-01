@@ -31,8 +31,8 @@ const ActionableModal = ({ isVisible, onClose, refresh, stuffId }) => {
             <button onClick={executeDelete}>Trash</button>
           </div>
           <div>
-            <h3>No action is needed now, but something might need to be done later</h3>
-            <button>Incubate</button>
+            <h3>I might want to do this someday</h3>
+            <button>put in someday/maybe list</button>
           </div>
           <div>
             <h3>
