@@ -8,12 +8,8 @@ const todoSchema = mongoose.Schema({
   description: {
     type: String,
   },
-  dueDate: {
-    type: Date,
-    required: true,
-  },
 })
 
-const Todo = mongoose.model('Todo', todoSchema)
+const Stuff = mongoose.model('Stuff', todoSchema)
 
-export default Todo
+export default Stuff

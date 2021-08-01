@@ -3,11 +3,11 @@ import PctInput from './PctInput'
 import PctTextBox from './PctTextBox'
 import PctDate from './PctDate'
 
-const TodoForm = ({ onSubmit, onChange, state }) => {
+const StuffForm = ({ onSubmit, onChange, state }) => {
   return (
     <div className="form">
       <label for="name">Name:</label>
-      <PctInput name="name" label="Todo name" value={state?.name} onChange={onChange} />
+      <PctInput name="name" label="Stuff name" value={state?.name} onChange={onChange} />
       <PctTextBox
         name="description"
         label="Description"
@@ -15,9 +15,9 @@ const TodoForm = ({ onSubmit, onChange, state }) => {
         onChange={onChange}
       />
       <PctDate name="dueDate" label="Due date" value={state?.dueDate} onChange={onChange} />
-      <button onClick={onSubmit}>{state?._id ? 'Edit todo' : 'Add todo'}</button>
+      <button onClick={onSubmit}>{state?._id ? 'Edit stuff' : 'Add stuff'}</button>
     </div>
   )
 }
 
-export default TodoForm
+export default StuffForm

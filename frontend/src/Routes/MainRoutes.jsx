@@ -1,9 +1,9 @@
-import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import Register from "../components/Register";
-import Map from "../components/Map";
-import Login from "../components/Login";
-import TodoPage from "../components/TodoPage";
+import React from 'react'
+import { Switch, Route, Redirect } from 'react-router-dom'
+import Register from '../components/Register'
+import Map from '../components/Map'
+import Login from '../components/Login'
+import StuffPage from '../components/StuffPage'
 
 const MainRoutes = () => {
   return (
@@ -14,8 +14,8 @@ const MainRoutes = () => {
       <Route path="/login">
         <Login />
       </Route>
-      <Route path="/todos">
-        <TodoPage />
+      <Route path="/stuff">
+        <StuffPage />
       </Route>
       <Route path="/register">
         <Register />
@@ -24,7 +24,7 @@ const MainRoutes = () => {
         <Map />
       </Route>
     </Switch>
-  );
-};
+  )
+}
 
-export default MainRoutes;
+export default MainRoutes

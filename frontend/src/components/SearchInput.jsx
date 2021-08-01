@@ -3,7 +3,7 @@ import React from 'react'
 const SearchInput = ({ setFilterText }) => {
   return (
     <div>
-      <label for="searchString">search todo</label>
+      <label for="searchString">search stuff</label>
       <input
         name="searchString"
         for="searchString"

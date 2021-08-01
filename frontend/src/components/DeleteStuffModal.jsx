@@ -2,14 +2,14 @@ import React from 'react'
 import useAxiosManual from '../hooks/useAxiosManual'
 import PctModal from './PctModal'
 
-const DeleteTodoModal = ({ isVisible, onClose, todoId, refresh }) => {
+const DeleteStuffModal = ({ isVisible, onClose, todoId, refresh }) => {
   const { execute } = useAxiosManual({
     axiosConfig: {
       method: 'delete',
       url: 'todos/delete',
       data: { _id: todoId },
     },
-    successMessage: 'Todo successfully deleted',
+    successMessage: 'Stuff successfully deleted',
     successFunction: () => {
       refresh()
       onClose()
@@ -18,14 +18,14 @@ const DeleteTodoModal = ({ isVisible, onClose, todoId, refresh }) => {
 
   return (
     <PctModal
-      title="Delete todo"
+      title="Delete stuff"
       isVisible={isVisible}
       onClose={onClose}
-      extra={<button onClick={execute}>Delete todo</button>}
+      extra={<button onClick={execute}>Delete stuff</button>}
     >
-      <p>Are you sure you want to delete this todo?</p>
+      <p>Are you sure you want to delete this stuff?</p>
     </PctModal>
   )
 }
 
-export default DeleteTodoModal
+export default DeleteStuffModal

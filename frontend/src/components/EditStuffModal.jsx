@@ -1,16 +1,16 @@
 import React from 'react'
 import useAxiosManual from '../hooks/useAxiosManual'
 import PctModal from './PctModal'
-import TodoForm from './TodoForm'
+import StuffForm from './StuffForm'
 
-const EditTodoModal = ({ isVisible, onClose, editTodo, onChange, refresh }) => {
+const EditStuffModal = ({ isVisible, onClose, editStuff, onChange, refresh }) => {
   const { execute } = useAxiosManual({
     axiosConfig: {
       method: 'put',
       url: 'todos/update',
-      data: editTodo,
+      data: editStuff,
     },
-    successMessage: 'todo has been successfully edited',
+    successMessage: 'stuff has been successfully edited',
     successFunction: () => {
       refresh()
       onClose()
@@ -19,9 +19,9 @@ const EditTodoModal = ({ isVisible, onClose, editTodo, onChange, refresh }) => {
 
   return (
     <PctModal isVisible={isVisible} onClose={onClose}>
-      <TodoForm state={editTodo} onClose={onClose} onChange={onChange} onSubmit={execute} />
+      <StuffForm state={editStuff} onClose={onClose} onChange={onChange} onSubmit={execute} />
     </PctModal>
   )
 }
 
-export default EditTodoModal
+export default EditStuffModal
