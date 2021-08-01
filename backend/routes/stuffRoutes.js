@@ -8,7 +8,7 @@ import {
 import express from 'express'
 const router = express.Router()
 
-router.route('/getStuffs').get(getStuffs)
+router.route('/list').get(getStuffs)
 router.route('fetch').get(fetchStuff)
 router.route('/add').post(addStuff)
 router.route('/delete').delete(deleteStuff)

@@ -1,10 +1,19 @@
 import React, { useState } from 'react'
-import DeleteStuffModal from '../DeleteStuffModal'
+import useDelete from '../../hooks/useDelete'
 import PctModal from '../PctModal'
 
 const ActionableModal = ({ isVisible, onClose, refresh, stuffId }) => {
   const [isUnactionable, setIsUnactionable] = useState(false)
-  const [deleteId, setDeleteId] = useState()
+
+  const { executeDelete } = useDelete({
+    _id: stuffId,
+    title: 'stuff',
+    collection: 'stuffs',
+    successFunction: () => {
+      refresh()
+      onClose()
+    },
+  })
 
   return (
     <PctModal isVisible={isVisible} onClose={onClose}>
@@ -19,7 +28,7 @@ const ActionableModal = ({ isVisible, onClose, refresh, stuffId }) => {
         <div className="flex-container">
           <div>
             <h3>Is it longer needed?</h3>
-            <button onClick={() => setDeleteId(stuffId)}>Trash</button>
+            <button onClick={executeDelete}>Trash</button>
           </div>
           <div>
             <h3>No action is needed now, but something might need to be done later</h3>
@@ -27,21 +36,12 @@ const ActionableModal = ({ isVisible, onClose, refresh, stuffId }) => {
           </div>
           <div>
             <h3>
-              The item is potentially useful information that might be needed for something later{' '}
+              The item is potentially useful information that might be needed for something later
             </h3>
             <button>Reference</button>
           </div>
         </div>
       )}
-      <DeleteStuffModal
-        isVisible={deleteId}
-        onClose={() => setDeleteId(null)}
-        todoId={deleteId}
-        refresh={() => {
-          refresh()
-          onClose()
-        }}
-      />
     </PctModal>
   )
 }

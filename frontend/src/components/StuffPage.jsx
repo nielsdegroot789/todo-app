@@ -18,7 +18,7 @@ const StuffPage = () => {
 
   // TODO: spinner
   const { response, loading, refresh } = useAxiosInit({
-    axiosConfig: { method: 'get', url: 'stuffs/getStuffs', params: { search: searchText } },
+    axiosConfig: { method: 'get', url: 'stuffs/list', params: { search: searchText } },
   })
 
   const { execute: addStuff } = useAxiosManual({
