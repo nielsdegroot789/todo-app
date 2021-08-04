@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const todoSchema = mongoose.Schema({
+const stuffSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -10,6 +10,6 @@ const todoSchema = mongoose.Schema({
   },
 })
 
-const Stuff = mongoose.model('Stuff', todoSchema)
+const Stuff = mongoose.model('Stuff', stuffSchema)
 
 export default Stuff
