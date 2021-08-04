@@ -3,19 +3,19 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Register from '../components/Register'
 import Map from '../components/Map'
 import Login from '../components/Login'
-import StuffPage from '../components/StuffPage'
+import StuffOverview from '../components/StuffOverview'
 
 const MainRoutes = () => {
   return (
     <Switch>
       <Route exact path="/">
-        <Redirect to="/login" />;
+        <Redirect to="/stuff" />;
       </Route>
       <Route path="/login">
         <Login />
       </Route>
       <Route path="/stuff">
-        <StuffPage />
+        <StuffOverview />
       </Route>
       <Route path="/register">
         <Register />

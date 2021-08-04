@@ -25,9 +25,10 @@ const ActionableModal = ({ isVisible, onClose, refresh, stuffId }) => {
         </>
       )}
       {isUnactionable && (
+        // TODO: same size for flex-items
         <div className="flex-container">
           <div>
-            <h3>Is it longer needed?</h3>
+            <h3>Don't need it anymore</h3>
             <button onClick={executeDelete}>Trash</button>
           </div>
           <div>

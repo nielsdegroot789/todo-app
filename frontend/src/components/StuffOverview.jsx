@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SearchInput from './SearchInput'
-import Stuff from '../components/Stuff'
+import Stuff from './Stuff'
 import DeleteStuffModal from './DeleteStuffModal'
 import StuffForm from './StuffForm'
 import EditStuffModal from './EditStuffModal'
@@ -8,7 +8,7 @@ import useAxiosInit from '../hooks/useAxiosInit'
 import useAxiosManual from '../hooks/useAxiosManual'
 import ActionableModal from './stuff/ActionableModal'
 
-const StuffPage = () => {
+const StuffOverview = () => {
   const [searchText, setSearchText] = useState()
   const [stuff, setStuff] = useState({})
   const [stuffs, setStuffs] = useState()
@@ -96,4 +96,4 @@ const StuffPage = () => {
   )
 }
 
-export default StuffPage
+export default StuffOverview
