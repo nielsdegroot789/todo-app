@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Register from '../components/Register'
 import Map from '../components/Map'
 import Login from '../components/Login'
-import StuffOverview from '../components/StuffOverview'
+import StuffOverviewPage from '../components/StuffOverviewPage'
 
 const MainRoutes = () => {
   return (
@@ -15,7 +15,7 @@ const MainRoutes = () => {
         <Login />
       </Route>
       <Route path="/stuff">
-        <StuffOverview />
+        <StuffOverviewPage />
       </Route>
       <Route path="/register">
         <Register />

@@ -8,7 +8,7 @@ import useAxiosInit from '../hooks/useAxiosInit'
 import useAxiosManual from '../hooks/useAxiosManual'
 import ActionableModal from './stuff/ActionableModal'
 
-const StuffOverview = () => {
+const StuffOverviewPage = () => {
   const [searchText, setSearchText] = useState()
   const [stuff, setStuff] = useState({})
   const [stuffs, setStuffs] = useState()
@@ -17,6 +17,7 @@ const StuffOverview = () => {
   const [actionable, setActionable] = useState()
 
   // TODO: spinner
+  // TODO: make navigation bar
   const { response, loading, refresh } = useAxiosInit({
     axiosConfig: { method: 'get', url: 'stuffs/list', params: { search: searchText } },
   })
@@ -96,4 +97,4 @@ const StuffOverview = () => {
   )
 }
 
-export default StuffOverview
+export default StuffOverviewPage

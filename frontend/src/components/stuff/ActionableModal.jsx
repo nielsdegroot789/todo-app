@@ -25,7 +25,6 @@ const ActionableModal = ({ isVisible, onClose, refresh, stuffId }) => {
         </>
       )}
       {isUnactionable && (
-        // TODO: same size for flex-items
         <div className="flex-container">
           <div>
             <h3>Don't need it anymore</h3>
@@ -33,12 +32,11 @@ const ActionableModal = ({ isVisible, onClose, refresh, stuffId }) => {
           </div>
           <div>
             <h3>I might want to do this someday</h3>
-            <button>put in someday/maybe list</button>
+            <input type="select" name="somedayCategory" />
+            <button>Add to someday list</button>
           </div>
           <div>
-            <h3>
-              The item is potentially useful information that might be needed for something later
-            </h3>
+            <h3>potentially useful information</h3>
             <button>Reference</button>
           </div>
         </div>
