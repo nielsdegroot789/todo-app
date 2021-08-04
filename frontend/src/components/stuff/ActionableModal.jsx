@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import useDelete from '../../hooks/useDelete'
 import PctModal from '../PctModal'
+import PctSelect from '../PctSelect'
 
 const ActionableModal = ({ isVisible, onClose, refresh, stuffId }) => {
   const [isUnactionable, setIsUnactionable] = useState(false)
@@ -32,7 +33,15 @@ const ActionableModal = ({ isVisible, onClose, refresh, stuffId }) => {
           </div>
           <div>
             <h3>I might want to do this someday</h3>
-            <input type="select" name="somedayCategory" />
+            <div>
+              <PctSelect
+                name="somedayCategory"
+                options={['hallo', 'test']}
+                onChange={(name, value) => console.log(name, value)}
+              />
+              {/* TODO: make Icon buttons + icon integrations */}
+              <button>+</button>
+            </div>
             <button>Add to someday list</button>
           </div>
           <div>
