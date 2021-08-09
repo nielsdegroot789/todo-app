@@ -75,20 +75,20 @@ const StuffOverviewPage = () => {
         )}
       </div>
       <EditStuffModal
-        isVisible={editStuff}
+        visible={editStuff}
         onClose={() => setEditStuff(null)}
         editStuff={editStuff}
         refresh={refresh}
         onChange={onChangeEditStuff}
       />
       <DeleteStuffModal
-        isVisible={deleteId}
+        visible={deleteId}
         onClose={() => setDeleteId(null)}
         todoId={deleteId}
         refresh={refresh}
       />
       <ActionableModal
-        isVisible={actionable}
+        visible={actionable}
         stuffId={actionable}
         onClose={() => setActionable(null)}
         refresh={refresh}

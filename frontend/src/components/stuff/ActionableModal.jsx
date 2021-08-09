@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import useDelete from '../../hooks/useDelete'
 import PctModal from '../PctModal'
-import PctSelect from '../PctSelect'
+import PctSelectAdd from '../PctSelectAdd'
 
-const ActionableModal = ({ isVisible, onClose, refresh, stuffId }) => {
+const ActionableModal = ({ visible, onClose, refresh, stuffId }) => {
   const [isUnactionable, setIsUnactionable] = useState(false)
 
   const { executeDelete } = useDelete({
@@ -17,7 +17,7 @@ const ActionableModal = ({ isVisible, onClose, refresh, stuffId }) => {
   })
 
   return (
-    <PctModal isVisible={isVisible} onClose={onClose}>
+    <PctModal visible={visible} onClose={onClose}>
       {!isUnactionable && (
         <>
           <h3>Is it actionable?</h3>
@@ -26,7 +26,7 @@ const ActionableModal = ({ isVisible, onClose, refresh, stuffId }) => {
         </>
       )}
       {isUnactionable && (
-        <div className="flex-container">
+        <div className="flex--space">
           <div>
             <h3>Don't need it anymore</h3>
             <button onClick={executeDelete}>Trash</button>
@@ -34,13 +34,13 @@ const ActionableModal = ({ isVisible, onClose, refresh, stuffId }) => {
           <div>
             <h3>I might want to do this someday</h3>
             <div>
-              <PctSelect
+              <PctSelectAdd
                 name="somedayCategory"
-                options={['hallo', 'test']}
                 onChange={(name, value) => console.log(name, value)}
+                label="Category list"
+                options={['hallo', 'test']}
               />
               {/* TODO: make Icon buttons + icon integrations */}
-              <button>+</button>
             </div>
             <button>Add to someday list</button>
           </div>

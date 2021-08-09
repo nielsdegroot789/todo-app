@@ -3,7 +3,7 @@ import useAxiosManual from '../hooks/useAxiosManual'
 import PctModal from './PctModal'
 import StuffForm from './StuffForm'
 
-const EditStuffModal = ({ isVisible, onClose, editStuff, onChange, refresh }) => {
+const EditStuffModal = ({ visible, onClose, editStuff, onChange, refresh }) => {
   const { execute } = useAxiosManual({
     axiosConfig: {
       method: 'put',
@@ -18,7 +18,7 @@ const EditStuffModal = ({ isVisible, onClose, editStuff, onChange, refresh }) =>
   })
 
   return (
-    <PctModal isVisible={isVisible} onClose={onClose}>
+    <PctModal visible={visible} onClose={onClose}>
       <StuffForm state={editStuff} onClose={onClose} onChange={onChange} onSubmit={execute} />
     </PctModal>
   )

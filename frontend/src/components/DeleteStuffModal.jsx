@@ -2,7 +2,7 @@ import React from 'react'
 import useDelete from '../hooks/useDelete'
 import PctModal from './PctModal'
 
-const DeleteStuffModal = ({ isVisible, onClose, todoId, refresh }) => {
+const DeleteStuffModal = ({ visible, onClose, todoId, refresh }) => {
   const { executeDelete } = useDelete({
     _id: todoId,
     title: 'stuff',
@@ -16,7 +16,7 @@ const DeleteStuffModal = ({ isVisible, onClose, todoId, refresh }) => {
   return (
     <PctModal
       title="Delete stuff"
-      isVisible={isVisible}
+      visible={visible}
       onClose={onClose}
       extra={<button onClick={executeDelete}>Delete stuff</button>}
     >

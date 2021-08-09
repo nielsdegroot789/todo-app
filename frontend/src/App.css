@@ -89,7 +89,15 @@ body {
   padding: 30px 0;
 }
 
-.flex-container {
+.flex--space {
   display: flex;
   justify-content: space-evenly;
+}
+
+.flex {
+  display: flex;
+}
+
+.select {
+  width: 100px;
 }

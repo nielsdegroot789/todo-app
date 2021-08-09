@@ -8,7 +8,7 @@ const useToggle = () => {
     setToggle(!isToggled)
   }
 
-  return { isToggled, toggle }
+  return [isToggled, toggle]
 }
 
 export default useToggle
