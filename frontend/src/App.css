@@ -89,3 +89,7 @@ body {
 #modal-children-container {
   padding: 30px 0;
 }
+
+#map {
+  height: 800px;
+}
