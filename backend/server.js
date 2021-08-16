@@ -4,6 +4,7 @@ import todoRoutes from './routes/todoRoutes.js'
 import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
+// import converter from './helpers/converter.js'
 
 // connect database
 connectDB()
@@ -21,7 +22,6 @@ app.use(cors())
 
 app.use('/users', userRoutes)
 app.use('/todos/', todoRoutes)
-
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT, console.log(`App is running in ${process.env.NODE_ENV} mode on port ${PORT}`))
