@@ -16,5 +16,6 @@
     "react/no-set-state": "off"
   },
   "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
-  "plugins": ["react", "prettier"]
+  "plugins": ["react", "prettier"],
+  "root": true
 }
