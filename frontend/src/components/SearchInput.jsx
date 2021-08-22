@@ -3,10 +3,10 @@ import React from 'react'
 const SearchInput = ({ setFilterText }) => {
   return (
     <div>
-      <label for="searchString">search todo</label>
+      <label htmlFor="searchString">search todo</label>
       <input
         name="searchString"
-        for="searchString"
+        htmlFor="searchString"
         onChange={e => {
           console.log('triggered', e.target.value)
           setFilterText(e.target.value)

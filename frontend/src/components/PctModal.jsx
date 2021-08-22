@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PctModal = ({ title, description, isVisible = false, children, onClose, extra }) => {
+const PctModal = ({ isVisible = false, children, onClose, extra }) => {
   if (!isVisible) {
     return null
   }
@@ -8,7 +8,7 @@ const PctModal = ({ title, description, isVisible = false, children, onClose, ex
   return (
     <div className="modal-container" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
-        <div class="modal-header">
+        <div className="modal-header">
           <span className="close-modal-icon" onClick={onClose}>
             &times;
           </span>

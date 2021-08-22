@@ -6,7 +6,7 @@ import PctDate from './PctDate'
 const TodoForm = ({ onSubmit, onChange, state }) => {
   return (
     <div className="form">
-      <label for="name">Name:</label>
+      <label htmlFor="name">Name:</label>
       <PctInput name="name" label="Todo name" value={state?.name} onChange={onChange} />
       <PctTextBox
         name="description"

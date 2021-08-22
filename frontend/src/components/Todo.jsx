@@ -1,5 +1,4 @@
 import React from 'react'
-import useToggle from '../hooks/useToggle'
 
 const Todo = ({ todo, setEditTodo, setDeleteId }) => {
   return (

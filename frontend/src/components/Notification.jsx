@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Notification = ({ type, title, description, onClose, onMore }) => {
+const Notification = ({ title, description, onClose }) => {
   // TODO: add different types and styling, fix onClose
   console.log(title)
   return (

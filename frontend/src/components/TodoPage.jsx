@@ -51,7 +51,7 @@ const TodoPage = () => {
   }, [searchText])
 
   return (
-    <div class="page-layout">
+    <div className="page-layout">
       <h1>Todos</h1>
       <SearchInput setFilterText={search} />
       <TodoForm onSubmit={addTodo} state={todo} onChange={onChangeTodo} />

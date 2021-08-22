@@ -10,7 +10,7 @@ const PctDate = ({ name, value, onChange, label }) => {
   return (
     <>
       {label && (
-        <label for={name} className="input">
+        <label htmlFor={name} className="input">
           {label}
         </label>
       )}
@@ -21,7 +21,7 @@ const PctDate = ({ name, value, onChange, label }) => {
           onChange(name, event.target.value)
         }}
         type="date"
-        class=" input inputDate"
+        className=" input inputDate"
       />
     </>
   )

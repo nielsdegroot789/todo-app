@@ -4,7 +4,7 @@ const PctInput = ({ name, value, onChange, label }) => {
   return (
     <>
       {label && (
-        <label for={name} className="input">
+        <label htmlFor={name} className="input">
           {label}
         </label>
       )}
@@ -15,7 +15,7 @@ const PctInput = ({ name, value, onChange, label }) => {
           onChange(name, event.target.value)
         }}
         type="text"
-        class=" input inputText"
+        className=" input inputText"
       />
     </>
   )

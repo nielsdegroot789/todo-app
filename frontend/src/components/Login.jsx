@@ -20,7 +20,7 @@ const Login = () => {
   }
   return (
     <div>
-      <label for="email">email</label>
+      <label htmlFor="email">email</label>
       <input
         name="email"
         onChange={e => setEmail(e.target.value)}
@@ -28,7 +28,7 @@ const Login = () => {
         id="email"
         value={email}
       />
-      <label for="password">Password</label>
+      <label htmlFor="password">Password</label>
       <input
         name="password"
         type="text"
