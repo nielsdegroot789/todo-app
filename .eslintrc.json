@@ -13,7 +13,8 @@
     "commonjs": true
   },
   "rules": {
-    "react/no-set-state": "off"
+    "react/no-set-state": "off",
+    "react/prop-types": "off"
   },
   "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
   "plugins": ["react", "prettier"],
