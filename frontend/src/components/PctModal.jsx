@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PctModal = ({ title, description, visible = false, children, onClose, extra }) => {
+const PctModal = ({ visible = false, children, onClose, extra }) => {
   if (!visible) {
     return null
   }

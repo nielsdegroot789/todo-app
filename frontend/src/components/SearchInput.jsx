@@ -8,7 +8,6 @@ const SearchInput = ({ setFilterText }) => {
         name="searchString"
         htmlFor="searchString"
         onChange={e => {
-          console.log('triggered', e.target.value)
           setFilterText(e.target.value)
         }}
       />

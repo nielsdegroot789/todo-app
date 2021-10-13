@@ -5,7 +5,7 @@ import PctTextBox from './PctTextBox'
 const StuffForm = ({ onSubmit, onChange, state }) => {
   return (
     <div className="form">
-      <label for="name">Name:</label>
+      <label htmlFor="name">Name:</label>
       <PctInput name="name" label="Stuff name" value={state?.name} onChange={onChange} />
       <PctTextBox
         name="description"

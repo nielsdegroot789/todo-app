@@ -6,7 +6,7 @@ const PctSelect = ({ name, value, onChange, label, placeholder, options }) => {
   }
   return (
     <div className="input flex--space">
-      <label for={name}>{label}</label>
+      <label htmlFor={name}>{label}</label>
       <select
         name={name}
         value={value}
@@ -14,8 +14,12 @@ const PctSelect = ({ name, value, onChange, label, placeholder, options }) => {
         placeholder={placeholder}
         className="select"
       >
-        {options.map(option => {
-          return <option value={option}>{option}</option>
+        {options.map((option, index) => {
+          return (
+            <option value={option} key={index}>
+              {option}
+            </option>
+          )
         })}
       </select>
     </div>

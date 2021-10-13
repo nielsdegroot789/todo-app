@@ -55,7 +55,7 @@ const StuffOverviewPage = () => {
   }, [searchText])
 
   return (
-    <div class="page-layout">
+    <div className="page-layout">
       <h1>Stuff</h1>
       <SearchInput setFilterText={search} />
       <StuffForm onSubmit={addStuff} state={stuff} onChange={onChangeStuff} />

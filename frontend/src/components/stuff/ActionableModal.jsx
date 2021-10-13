@@ -28,7 +28,7 @@ const ActionableModal = ({ visible, onClose, refresh, stuffId }) => {
       {isUnactionable && (
         <div className="flex--space">
           <div>
-            <h3>Don't need it anymore</h3>
+            <h3>Don`&apos;`t need it anymore</h3>
             <button onClick={executeDelete}>Trash</button>
           </div>
           <div>
