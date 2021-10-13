@@ -7,7 +7,7 @@ const EditStuffModal = ({ visible, onClose, editStuff, onChange, refresh }) => {
   const { execute } = useAxiosManual({
     axiosConfig: {
       method: 'put',
-      url: 'todos/update',
+      url: 'stuffs/update',
       data: editStuff,
     },
     successMessage: 'stuff has been successfully edited',
@@ -17,9 +17,14 @@ const EditStuffModal = ({ visible, onClose, editStuff, onChange, refresh }) => {
     },
   })
 
+  const onSubmit = () => {
+    execute()
+    onClose()
+  }
+
   return (
     <PctModal visible={visible} onClose={onClose}>
-      <StuffForm state={editStuff} onClose={onClose} onChange={onChange} onSubmit={execute} />
+      <StuffForm state={editStuff} onClose={onClose} onChange={onChange} onSubmit={onSubmit} />
     </PctModal>
   )
 }
