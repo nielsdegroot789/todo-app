@@ -98,6 +98,13 @@ body {
   justify-content: space-evenly;
 }
 
+.flex--space-center {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+
 .flex {
   display: flex;
 }
