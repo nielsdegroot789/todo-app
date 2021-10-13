@@ -6,6 +6,7 @@ import TodoForm from './TodoForm'
 import EditTodoModal from './EditTodoModal'
 import useAxiosInit from '../hooks/useAxiosInit'
 import useAxiosManual from '../hooks/useAxiosManual'
+import DatePicker from './DatePicker'
 
 const TodoPage = () => {
   const [searchText, setSearchText] = useState()
@@ -53,6 +54,7 @@ const TodoPage = () => {
   return (
     <div className="page-layout">
       <h1>Todos</h1>
+      <DatePicker />
       <SearchInput setFilterText={search} />
       <TodoForm onSubmit={addTodo} state={todo} onChange={onChangeTodo} />
       <div id="todo-container">

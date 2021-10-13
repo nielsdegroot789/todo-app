@@ -4,6 +4,8 @@ import todoRoutes from './routes/todoRoutes.js'
 import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
+
+/* TODO: converter is probably redundant, check it out  */
 // import converter from './helpers/converter.js'
 
 // connect database
