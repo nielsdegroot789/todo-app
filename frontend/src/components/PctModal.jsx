@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PctModal = ({ visible = false, children, onClose, extra }) => {
+const PctModal = ({ title, visible = false, children, onClose, onSubmit, extra }) => {
   if (!visible) {
     return null
   }
@@ -8,6 +8,7 @@ const PctModal = ({ visible = false, children, onClose, extra }) => {
   return (
     <div className="modal-container" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
+        <h3>{title}</h3>
         <div className="modal-header">
           <span className="close-modal-icon" onClick={onClose}>
             &times;
@@ -16,6 +17,7 @@ const PctModal = ({ visible = false, children, onClose, extra }) => {
         <div id="modal-children-container">{children}</div>
         <div className="modal-footer">
           <button onClick={onClose}>Cancel</button>
+          <button onClick={onSubmit}>Cancel</button>
           {extra}
         </div>
       </div>

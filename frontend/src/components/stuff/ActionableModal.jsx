@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import useDelete from '../../hooks/useDelete'
+import useAdd from '../../hooks/useAdd'
 import PctModal from '../PctModal'
 import PctSelectAdd from '../PctSelectAdd'
 
 const ActionableModal = ({ visible, onClose, refresh, stuffId }) => {
   const [isUnactionable, setIsUnactionable] = useState(false)
+  const [somedayCategory, setSomedayCategory] = useState()
 
   const { executeDelete } = useDelete({
     _id: stuffId,
@@ -15,6 +17,8 @@ const ActionableModal = ({ visible, onClose, refresh, stuffId }) => {
       onClose()
     },
   })
+
+  const { executeAdd } = useAdd({ value: somedayCategory, collection: 'somedays' })
 
   return (
     <PctModal visible={visible} onClose={onClose}>
@@ -28,7 +32,7 @@ const ActionableModal = ({ visible, onClose, refresh, stuffId }) => {
       {isUnactionable && (
         <div className="flex--space">
           <div>
-            <h3>Don`&apos;`t need it anymore</h3>
+            <h3>Don&apos;t need it anymore</h3>
             <button onClick={executeDelete}>Trash</button>
           </div>
           <div>
@@ -39,6 +43,9 @@ const ActionableModal = ({ visible, onClose, refresh, stuffId }) => {
                 onChange={(name, value) => console.log(name, value)}
                 label="Category list"
                 options={['hallo', 'test']}
+                addTitle={somedayCategory}
+                addOnChange={setSomedayCategory}
+                addSubmit={executeAdd}
               />
               {/* TODO: make Icon buttons + icon integrations */}
             </div>
