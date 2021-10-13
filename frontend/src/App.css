@@ -37,7 +37,7 @@ body {
   height: 25px;
 }
 
-#todo-item-container {
+#stuff-item-container {
   display: flex;
   justify-content: space-around;
   padding: 2rem;
@@ -73,7 +73,6 @@ body {
 
 .modal-header {
   padding: 15px;
-  border-bottom: 1px solid beige;
   font-size: 25px;
 }
 
@@ -92,4 +91,17 @@ body {
 
 #map {
   height: 800px;
+}
+
+.flex--space {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.flex {
+  display: flex;
+}
+
+.select {
+  width: 100px;
 }

@@ -1,21 +1,21 @@
-import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import Register from "../components/Register";
-import Map from "../components/Map";
-import Login from "../components/Login";
-import TodoPage from "../components/TodoPage";
+import React from 'react'
+import { Switch, Route, Redirect } from 'react-router-dom'
+import Register from '../components/Register'
+import Map from '../components/Map'
+import Login from '../components/Login'
+import StuffOverviewPage from '../components/StuffOverviewPage'
 
 const MainRoutes = () => {
   return (
     <Switch>
       <Route exact path="/">
-        <Redirect to="/login" />;
+        <Redirect to="/stuff" />;
       </Route>
       <Route path="/login">
         <Login />
       </Route>
-      <Route path="/todos">
-        <TodoPage />
+      <Route path="/stuff">
+        <StuffOverviewPage />
       </Route>
       <Route path="/register">
         <Register />
@@ -24,7 +24,7 @@ const MainRoutes = () => {
         <Map />
       </Route>
     </Switch>
-  );
-};
+  )
+}
 
-export default MainRoutes;
+export default MainRoutes

@@ -1,7 +1,7 @@
 import React from 'react'
 
-const PctModal = ({ isVisible = false, children, onClose, extra }) => {
-  if (!isVisible) {
+const PctModal = ({ title, description, visible = false, children, onClose, extra }) => {
+  if (!visible) {
     return null
   }
 
