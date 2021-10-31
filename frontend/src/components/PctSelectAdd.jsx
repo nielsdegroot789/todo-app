@@ -1,6 +1,6 @@
 import React from 'react'
 import useToggle from '../hooks/useToggle'
-import PctModal from './PctModal'
+import PctAddModal from './PctAddModal'
 import PctSelect from './PctSelect'
 
 const PctSelectAdd = ({
@@ -17,12 +17,12 @@ const PctSelectAdd = ({
 
   return (
     <div className="flex">
-      <PctModal
+      <PctAddModal
         title={`New ${addTitle}`}
         visible={isToggled}
         onClose={toggle}
         onSubmit={addSubmit}
-      ></PctModal>
+      ></PctAddModal>
 
       <PctSelect
         name={name}

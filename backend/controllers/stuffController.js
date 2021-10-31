@@ -17,7 +17,7 @@ const getStuffs = asyncHandler(async (req, res) => {
     const searchRegEx = new RegExp(`^${query.search}`, 'i')
     filter.$or = [{ name: searchRegEx }, { description: searchRegEx }]
   }
-  console.log(filter)
+
   const todos = await Stuff.find(filter)
   if (!todos) {
     res.status(404).json({ message: 'Stuffs not found' })

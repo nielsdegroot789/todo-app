@@ -17,7 +17,7 @@ const PctModal = ({ title, visible = false, children, onClose, onSubmit, extra }
         <div id="modal-children-container">{children}</div>
         <div className="modal-footer">
           <button onClick={onClose}>Cancel</button>
-          <button onClick={onSubmit}>Cancel</button>
+          <button onClick={onSubmit}>Submit</button>
           {extra}
         </div>
       </div>
