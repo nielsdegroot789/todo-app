@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import useDelete from '../../hooks/useDelete'
-import useAdd from '../../hooks/useAdd'
 import PctModal from '../PctModal'
-import PctSelectAdd from '../PctSelectAdd'
+import SelectAddCategory from './SelectAddCategory'
 
+/* TODO: make Icon buttons + icon integrations */
 const ActionableModal = ({ visible, onClose, refresh, stuffId }) => {
   const [isUnactionable, setIsUnactionable] = useState(false)
-  const [somedayCategory, setSomedayCategory] = useState()
 
   const { executeDelete } = useDelete({
     _id: stuffId,
@@ -17,8 +16,6 @@ const ActionableModal = ({ visible, onClose, refresh, stuffId }) => {
       onClose()
     },
   })
-
-  const { executeAdd } = useAdd({ value: somedayCategory, collection: 'somedays' })
 
   return (
     <PctModal visible={visible} onClose={onClose}>
@@ -38,16 +35,7 @@ const ActionableModal = ({ visible, onClose, refresh, stuffId }) => {
           <div>
             <h3>I might want to do this someday</h3>
             <div>
-              <PctSelectAdd
-                name="somedayCategory"
-                onChange={(name, value) => console.log(name, value)}
-                label="Category list"
-                options={['hallo', 'test']}
-                addTitle={somedayCategory}
-                addOnChange={setSomedayCategory}
-                addSubmit={executeAdd}
-              />
-              {/* TODO: make Icon buttons + icon integrations */}
+              <SelectAddCategory />
             </div>
             <button>Add to someday list</button>
           </div>
