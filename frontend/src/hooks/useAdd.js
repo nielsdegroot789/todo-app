@@ -1,14 +1,13 @@
 import useAxiosManual from './useAxiosManual'
 
-const useAdd = ({ value, title, collection, successFunction }) => {
-  console.log(value, title, collection)
+const useAdd = ({ data, title, collection, successFunction }) => {
   const { execute } = useAxiosManual({
     axiosConfig: {
       method: 'add',
       url: `${collection}/add`,
-      data: { value },
+      data: { data },
     },
-    successMessage: `${title} successfully deleted`,
+    successMessage: title ? `${title} successfully added` : false,
     successFunction,
   })
 
