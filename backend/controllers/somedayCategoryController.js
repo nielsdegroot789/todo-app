@@ -1,11 +1,10 @@
-import asyncHandler from 'express-async-handler'
-import SomedayCategory from '../models/somedayCategorieModel'
+import SomedayCategory from '../models/somedayCategoryModel'
 
 const addSomedayCategory = asyncHandler(async (res, req) => {
   const data = req.body()
 
-  const somedayItem = new SomedayCategory(data)
-  await somedayItem.save()
+  const somedayCategory = new SomedayCategory()
+  await somedayCategory.save()
   res.end()
 })
 
