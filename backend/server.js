@@ -1,6 +1,6 @@
 import connectDB from './config/db.js'
-import userRoutes from './routes/userRoute.js'
 import stuffRoutes from './routes/stuffRoutes.js'
+import somedayCategoryRoutes from './routes/somedayCategoryRoutes.js'
 import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
@@ -22,8 +22,8 @@ app.use(express.json())
 // enable cors
 app.use(cors())
 
-app.use('/users', userRoutes)
 app.use('/stuffs/', stuffRoutes)
+app.use('/somedayCategory/', somedayCategoryRoutes)
 
 const PORT = process.env.PORT || 5000
 
