@@ -8,6 +8,8 @@ const SelectAddCategory = () => {
   const [newCategory, setNewCategory] = useState()
 
   const { executeAdd } = useAdd({ data: category, collection: 'somedays' })
+  
+
   return (
     <PctSelectAdd
       name="category"
@@ -16,12 +18,12 @@ const SelectAddCategory = () => {
       options={['hallo', 'test']}
       addTitle="category"
       addSubmit={executeAdd}
-      addData={newCategory}
+      config={{ data: newCategory, collection: 'somedayCategory' }}
       form={
         <div>
           <PctInput
-            name="category"
-            label="new Category"
+            name="name"
+            label="new category"
             value={newCategory?.value}
             onChange={(name, value) => setNewCategory({ [name]: value })}
           />

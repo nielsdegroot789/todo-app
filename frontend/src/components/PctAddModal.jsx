@@ -3,14 +3,15 @@ import useAdd from '../hooks/useAdd'
 import PctModal from './PctModal'
 /* TODO: Is this the right way to make a modular select AddModal*/
 
-const PctAddModal = ({ title, visible, onClose, collection, form, addData }) => {
+const PctAddModal = ({ title, visible, onClose, form, config }) => {
   const { executeAdd } = useAdd({
-    addData,
-    collection,
-    title,
+    data: config?.data,
+    collection: config?.collection,
+    title: config?.title,
     successFunction: onClose,
   })
 
+  console.log(config?.data)
   return (
     <div>
       <PctModal title={`add ${title}`} visible={visible} onClose={onClose} onSubmit={executeAdd}>
