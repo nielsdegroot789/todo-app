@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import useAxiosInit from '../../hooks/useAxiosInit'
 import useDelete from '../../hooks/useDelete'
 import PctModal from '../PctModal'
 import SelectAddCategory from './SelectAddCategory'
 
 /* TODO: make Icon buttons + icon integrations */
 const ActionableModal = ({ visible, onClose, refresh, stuffId }) => {
+  if (!visible) {
+    return null
+  }
   const [isUnactionable, setIsUnactionable] = useState(false)
 
   const { executeDelete } = useDelete({
@@ -17,6 +21,17 @@ const ActionableModal = ({ visible, onClose, refresh, stuffId }) => {
     },
   })
 
+  const { response } = useAxiosInit({
+    axiosConfig: { method: 'get', url: 'stuffs/fetch', data: stuffId },
+  })
+
+  console.log(response)
+  useEffect(() => {
+    if (!stuffId) {
+      return null
+    }
+  }, [stuffId])
+
   return (
     <PctModal visible={visible} onClose={onClose}>
       {!isUnactionable && (
@@ -26,7 +41,8 @@ const ActionableModal = ({ visible, onClose, refresh, stuffId }) => {
           <button onClick={() => setIsUnactionable(true)}>No</button>
         </>
       )}
-      {isUnactionable && (
+      {/* TODO: different component 
+     {isUnactionable && (
         <div className="flex--space">
           <div>
             <h3>Don&apos;t need it anymore</h3>
@@ -44,7 +60,7 @@ const ActionableModal = ({ visible, onClose, refresh, stuffId }) => {
             <button>Reference</button>
           </div>
         </div>
-      )}
+      )} */}
     </PctModal>
   )
 }

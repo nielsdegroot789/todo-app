@@ -9,8 +9,8 @@ const SelectAddCategory = () => {
   const [category, setCategory] = useState()
   const [newCategory, setNewCategory] = useState()
 
-  /* figure out why useAdd rerenders so much */
   const { executeAdd } = useAdd({ data: category, collection: 'somedays' })
+
   const { response } = useAxiosInit({
     axiosConfig: { method: 'get', url: 'somedayCategory/list' },
   })
@@ -18,7 +18,7 @@ const SelectAddCategory = () => {
   useEffect(() => {
     if (response) {
       const categories = response.map(category => category.name)
-      setCategories(categories)
+      setCategories(['No category', ...categories])
     }
   }, [response])
 

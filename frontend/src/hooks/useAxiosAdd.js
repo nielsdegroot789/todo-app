@@ -2,11 +2,12 @@ import useAxiosManual from './useAxiosManual'
 
 /*TODO: make test for this */
 /*TODO: make error component */
+/* TODO: figure out rerender issue */
 const useAdd = ({ data, title, collection, successFunction }) => {
   if (!data && !collection) {
     return console.log('Found no data or collection')
   }
-  console.log('rerendered useAdd')
+  /* console.log('rerendered useAdd') */
   const { execute } = useAxiosManual({
     axiosConfig: {
       method: 'post',

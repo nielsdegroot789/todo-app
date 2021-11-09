@@ -58,16 +58,15 @@ const updateStuff = asyncHandler(async (req, res) => {
 })
 
 const fetchStuff = asyncHandler(async (req, res) => {
-  const data = req.body
-
-  if (!data?._id) {
+  const _id = req.body
+  if (_id) {
     res.status(404)
     throw new Error('id not found')
   }
 
-  const stuff = await Stuff.findOne(data._id)
+  const stuff = await Stuff.findOne(_id)
 
+  res.send(stuff)
   res.end()
-  return stuff
 })
 export { addStuff, getStuffs, deleteStuff, updateStuff, fetchStuff }
