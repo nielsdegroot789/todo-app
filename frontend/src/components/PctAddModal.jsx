@@ -1,5 +1,5 @@
 import React from 'react'
-import useAdd from '../hooks/useAdd'
+import useAdd from '../hooks/useAxiosAdd'
 import PctModal from './PctModal'
 /* TODO: Is this the right way to make a modular select AddModal*/
 
@@ -11,7 +11,6 @@ const PctAddModal = ({ title, visible, onClose, form, config }) => {
     successFunction: onClose,
   })
 
-  console.log(config?.data)
   return (
     <div>
       <PctModal title={`add ${title}`} visible={visible} onClose={onClose} onSubmit={executeAdd}>

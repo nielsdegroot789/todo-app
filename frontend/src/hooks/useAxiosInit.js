@@ -15,6 +15,7 @@ const useAxiosInit = ({
   })
 
   useEffect(() => {
+    console.log('rerendered axiosInit')
     executeAxios(axiosConfig)
   }, [])
 

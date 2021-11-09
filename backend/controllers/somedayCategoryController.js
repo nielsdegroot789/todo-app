@@ -9,4 +9,11 @@ const addSomedayCategory = asyncHandler(async (req, res) => {
   res.end
 })
 
-export { addSomedayCategory }
+const getSomedayCategories = asyncHandler(async (req, res) => {
+  const somedayCategories = await SomedayCategory.find()
+
+  res.send(somedayCategories)
+  res.end()
+})
+
+export { addSomedayCategory, getSomedayCategories }

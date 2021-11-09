@@ -1,21 +1,33 @@
-import React, { useState } from 'react'
-import useAdd from '../../hooks/useAdd'
+import React, { useEffect, useState } from 'react'
+import useAdd from '../../hooks/useAxiosAdd'
+import useAxiosInit from '../../hooks/useAxiosInit'
 import PctInput from '../PctInput'
 import PctSelectAdd from '../PctSelectAdd'
 
 const SelectAddCategory = () => {
+  const [categories, setCategories] = useState()
   const [category, setCategory] = useState()
   const [newCategory, setNewCategory] = useState()
 
+  /* figure out why useAdd rerenders so much */
   const { executeAdd } = useAdd({ data: category, collection: 'somedays' })
-  
+  const { response } = useAxiosInit({
+    axiosConfig: { method: 'get', url: 'somedayCategory/list' },
+  })
+
+  useEffect(() => {
+    if (response) {
+      const categories = response.map(category => category.name)
+      setCategories(categories)
+    }
+  }, [response])
 
   return (
     <PctSelectAdd
       name="category"
       onChange={(name, value) => setCategory(name, value)}
       label="Category list"
-      options={['hallo', 'test']}
+      options={categories}
       addTitle="category"
       addSubmit={executeAdd}
       config={{ data: newCategory, collection: 'somedayCategory' }}

@@ -6,7 +6,7 @@ const useAdd = ({ data, title, collection, successFunction }) => {
   if (!data && !collection) {
     return console.log('Found no data or collection')
   }
-
+  console.log('rerendered useAdd')
   const { execute } = useAxiosManual({
     axiosConfig: {
       method: 'post',
