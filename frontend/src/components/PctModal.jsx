@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PctModal = ({ title, visible = false, children, onClose, onSubmit, extra }) => {
+const PctModal = ({ title, visible = false, children, onClose, onSubmit, onDelete, extra }) => {
   if (!visible) {
     return null
   }
@@ -18,6 +18,7 @@ const PctModal = ({ title, visible = false, children, onClose, onSubmit, extra }
         <div className="modal-footer">
           <button onClick={onClose}>Cancel</button>
           {onSubmit && <button onClick={onSubmit}>Submit</button>}
+          {onDelete && <button onClick={onDelete}>Delete</button>}
           {extra}
         </div>
       </div>

@@ -1,8 +1,11 @@
 import React from 'react'
 import useDelete from '../../hooks/useDelete'
+import useToggle from '../../hooks/useToggle'
+import DeleteConfirmationModal from '../DeleteConfirmationModal'
 import SelectAddCategory from './SelectAddCategory'
 
 const NotActionableChoices = ({ stuffId, refresh, onClose }) => {
+  const [isToggled, toggle] = useToggle()
   const { executeDelete } = useDelete({
     _id: stuffId,
     title: 'stuff',
@@ -12,12 +15,14 @@ const NotActionableChoices = ({ stuffId, refresh, onClose }) => {
       onClose()
     },
   })
+
+  console.log(isToggled)
   return (
     <div>
       <div className="flex--space">
         <div>
           <h3>Don&apos;t need it anymore</h3>
-          <button onClick={executeDelete}>Trash</button>
+          <button onClick={toggle}>Trash</button>
         </div>
         <div>
           <h3>I might want to do this someday</h3>
@@ -31,6 +36,7 @@ const NotActionableChoices = ({ stuffId, refresh, onClose }) => {
           <button>Reference</button>
         </div>
       </div>
+      <DeleteConfirmationModal method={executeDelete} visible={isToggled} />
     </div>
   )
 }
