@@ -20,7 +20,7 @@ const PctSelectAdd = ({
   return (
     <div className="flex">
       <PctAddModal
-        title={`New ${addTitle}`}
+        title={`new ${addTitle}`}
         visible={isToggled}
         onClose={toggle}
         onSubmit={addSubmit}

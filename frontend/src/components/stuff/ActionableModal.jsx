@@ -22,10 +22,10 @@ const ActionableModal = ({ visible, onClose, stuffId }) => {
   }, [stuffId])
 
   return (
-    <PctModal visible={visible} onClose={onClose}>
+    <PctModal title={response?.name} visible={visible} onClose={onClose}>
       {!isUnactionable && (
         <>
-          <h3>Is it actionable?</h3>
+          <p>Is it actionable?</p>
           <button>Yes</button>
           <button onClick={() => setIsUnactionable(true)}>No</button>
         </>
