@@ -7,8 +7,8 @@ const useAdd = ({ data, title, collection, successFunction }) => {
   if (!data && !collection) {
     return console.log('Found no data or collection')
   }
-  /* console.log('rerendered useAdd') */
-  const { execute } = useAxiosManual({
+
+  const { execute, response } = useAxiosManual({
     axiosConfig: {
       method: 'post',
       url: `${collection}/add`,
@@ -17,12 +17,12 @@ const useAdd = ({ data, title, collection, successFunction }) => {
     successMessage: title ? `${title} successfully added` : false,
     successFunction,
   })
-
+  console.log(response)
   const executeAdd = () => {
     execute()
   }
 
-  return { executeAdd }
+  return { executeAdd, response }
 }
 
 export default useAdd
