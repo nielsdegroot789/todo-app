@@ -36,7 +36,7 @@ const NotActionableChoices = ({ stuffId, refresh, onClose }) => {
           <button>Reference</button>
         </div>
       </div>
-      <DeleteConfirmationModal method={executeDelete} visible={isToggled} />
+      <DeleteConfirmationModal method={executeDelete} visible={isToggled} onClose={toggle} />
     </div>
   )
 }
