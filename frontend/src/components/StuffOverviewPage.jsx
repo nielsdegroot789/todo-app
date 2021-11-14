@@ -29,18 +29,17 @@ const StuffOverviewPage = () => {
       data: stuff,
     },
     successMessage: 'Successfully added stuff',
-    successFunction: refresh,
+    successFunction: () => {
+      refresh()
+      setStuff({ name: '' })
+    },
   })
-
+  console.log(stuff)
   useEffect(() => {
     if (response) {
       setStuffs(response)
     }
   }, [response])
-
-  const onChangeStuff = (name, value) => {
-    setStuff({ ...stuff, [name]: value })
-  }
 
   const onChangeEditStuff = (name, value) => {
     setEditStuff({ ...editStuff, [name]: value })
@@ -58,7 +57,13 @@ const StuffOverviewPage = () => {
     <div className="page-layout">
       <h1>Stuff</h1>
       <SearchInput setFilterText={search} />
-      <StuffForm onSubmit={addStuff} state={stuff} onChange={onChangeStuff} />
+      <StuffForm
+        onSubmit={addStuff}
+        state={stuff}
+        onChange={(name, value) => {
+          setStuff({ ...stuff, [name]: value })
+        }}
+      />
       <div id="stuff-container">
         {loading ? (
           <p>Loading...</p>
@@ -91,7 +96,6 @@ const StuffOverviewPage = () => {
         visible={actionable}
         stuffId={actionable}
         onClose={() => setActionable(null)}
-        refresh={refresh}
       />
     </div>
   )
