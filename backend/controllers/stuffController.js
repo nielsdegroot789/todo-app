@@ -29,13 +29,13 @@ const getStuffs = asyncHandler(async (req, res) => {
 })
 
 const deleteStuff = asyncHandler(async (req, res) => {
-  const todoId = req.body
-  if (!todoId) {
+  const id = req.body
+  if (!id) {
     res.status(404)
     throw new Error('id not found')
   }
 
-  await Stuff.deleteOne(todoId)
+  await Stuff.deleteOne(id)
   res.end()
 })
 
