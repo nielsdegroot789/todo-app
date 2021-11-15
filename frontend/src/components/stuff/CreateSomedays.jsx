@@ -4,14 +4,14 @@ import useAxiosInit from '../../hooks/useAxiosInit'
 import PctInput from '../PctInput'
 import PctSelectAdd from '../PctSelectAdd'
 
-const SelectAddCategory = () => {
+const CreateSomedays = () => {
   const [categories, setCategories] = useState()
-  const [category, setCategory] = useState()
+  const [category, setCategory] = useState(null)
   const [newCategory, setNewCategory] = useState()
 
-  const { executeAdd } = useAdd({ data: category, collection: 'somedays' })
+  const { executeAdd: createSomeday } = useAdd({ data: category, collection: 'somedays' })
 
-  const { response } = useAxiosInit({
+  const { response, refresh } = useAxiosInit({
     axiosConfig: { method: 'get', url: 'somedayCategory/list' },
   })
 
@@ -24,14 +24,19 @@ const SelectAddCategory = () => {
 
   return (
     <PctSelectAdd
-      name="category"
-      onChange={(name, value) => setCategory(name, value)}
+      name="name"
+      value={category?.name}
+      onChange={(name, value) => setCategory({ [name]: value })}
       label="Category list"
       options={categories}
       addTitle="category"
-      addSubmit={executeAdd}
+      addSubmit={createSomeday}
       config={{ data: newCategory, collection: 'somedayCategory' }}
-      form={
+      successFunction={response => {
+        setCategory({ name: response?.name })
+        refresh()
+      }}
+      addForm={
         <div>
           <PctInput
             name="name"
@@ -45,4 +50,4 @@ const SelectAddCategory = () => {
   )
 }
 
-export default SelectAddCategory
+export default CreateSomedays

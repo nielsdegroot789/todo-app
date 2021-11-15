@@ -6,7 +6,7 @@ const addSomedayCategory = asyncHandler(async (req, res) => {
 
   const somedayCategory = new SomedayCategory(data)
   await somedayCategory.save()
-  res.end()
+  res.send(data)
 })
 
 const getSomedayCategories = asyncHandler(async (req, res) => {

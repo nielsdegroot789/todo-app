@@ -4,17 +4,17 @@ import PctModal from '../PctModal'
 import NotActionableChoices from './NotActionableChoices'
 
 /* TODO: make Icon buttons + icon integrations */
-const ActionableModal = ({ visible, onClose, stuffId }) => {
+const ActionableModal = ({ visible, onClose, stuffId }) => { 
   if (!visible) {
     return null
   }
-  const [isUnactionable, setIsUnactionable] = useState(false)
+
+  const [isUnactionable, setIsUnactionable] = useState(false) 
 
   const { refresh, response } = useAxiosInit({
     axiosConfig: { method: 'get', url: 'stuffs/fetch', params: { _id: stuffId } },
   })
 
-  console.log(response)
   useEffect(() => {
     if (!stuffId) {
       return null
