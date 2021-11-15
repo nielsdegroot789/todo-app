@@ -4,15 +4,21 @@ import useAxiosInit from '../../hooks/useAxiosInit'
 import PctInput from '../PctInput'
 import PctSelectAdd from '../PctSelectAdd'
 
-const CreateSomedays = () => {
+const CreateSomedays = ({ stuffName, refreshStuffs }) => {
   const [categories, setCategories] = useState()
   const [category, setCategory] = useState(null)
   const [newCategory, setNewCategory] = useState()
 
-  const { executeAdd: createSomeday } = useAdd({ data: category, collection: 'somedays' })
+  const { executeAdd: createSomeday } = useAdd({
+    data: { name: stuffName, category },
+    collection: 'somedays',
+    successFunction: () => {
+      refreshStuffs
+    },
+  })
 
   const { response, refresh } = useAxiosInit({
-    axiosConfig: { method: 'get', url: 'somedayCategory/list' },
+    axiosConfig: { method: 'get', url: 'somedayCategories/list' },
   })
 
   useEffect(() => {
@@ -23,30 +29,32 @@ const CreateSomedays = () => {
   }, [response])
 
   return (
-    <PctSelectAdd
-      name="name"
-      value={category?.name}
-      onChange={(name, value) => setCategory({ [name]: value })}
-      label="Category list"
-      options={categories}
-      addTitle="category"
-      addSubmit={createSomeday}
-      config={{ data: newCategory, collection: 'somedayCategory' }}
-      successFunction={response => {
-        setCategory({ name: response?.name })
-        refresh()
-      }}
-      addForm={
-        <div>
-          <PctInput
-            name="name"
-            label="new category"
-            value={newCategory?.value}
-            onChange={(name, value) => setNewCategory({ [name]: value })}
-          />
-        </div>
-      }
-    />
+    <div>
+      <PctSelectAdd
+        name="category"
+        value={category?.category}
+        onChange={(name, value) => setCategory({ [name]: value })}
+        label="Category list"
+        options={categories}
+        addTitle="category"
+        config={{ data: newCategory, collection: 'somedayCategories' }}
+        successFunction={response => {
+          setCategory({ name: response?.name })
+          refresh()
+        }}
+        addForm={
+          <div>
+            <PctInput
+              name="name"
+              label="new category"
+              value={newCategory?.value}
+              onChange={(name, value) => setNewCategory({ [name]: value })}
+            />
+          </div>
+        }
+      />
+      <button onClick={createSomeday}>Add to someday list</button>
+    </div>
   )
 }
 

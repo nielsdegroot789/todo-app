@@ -4,7 +4,7 @@ import useToggle from '../../hooks/useToggle'
 import DeleteConfirmationModal from '../DeleteConfirmationModal'
 import CreateSomedays from './CreateSomedays'
 
-const NotActionableChoices = ({ stuffId, refresh, onClose }) => {
+const NotActionableChoices = ({ stuffId, stuffName, refresh, onClose }) => {
   const [isToggled, toggle] = useToggle()
   const { executeDelete } = useDelete({
     _id: stuffId,
@@ -26,9 +26,8 @@ const NotActionableChoices = ({ stuffId, refresh, onClose }) => {
         <div>
           <h3>I might want to do this someday</h3>
           <div>
-            <CreateSomedays />
+            <CreateSomedays stuffId={stuffId} stuffName={stuffName} refreshStuffs={refresh} />
           </div>
-          <button>Add to someday list</button>
         </div>
         <div>
           <h3>potentially useful information</h3>

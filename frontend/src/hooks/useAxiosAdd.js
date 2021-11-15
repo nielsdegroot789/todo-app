@@ -17,7 +17,7 @@ const useAdd = ({ data, title, collection, successFunction }) => {
     successMessage: title ? `${title} successfully added` : false,
     successFunction,
   })
-  console.log(response)
+
   const executeAdd = () => {
     execute()
   }

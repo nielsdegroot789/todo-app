@@ -11,7 +11,6 @@ const PctSelectAdd = ({
   placeholder,
   options,
   addTitle,
-  addSubmit,
   addForm,
   successFunction,
   config,
@@ -24,7 +23,6 @@ const PctSelectAdd = ({
         title={addTitle}
         visible={isToggled}
         onClose={toggle}
-        onSubmit={addSubmit}
         form={addForm}
         config={config}
         successFunction={successFunction}
@@ -38,7 +36,7 @@ const PctSelectAdd = ({
         placeholder={placeholder}
         options={options}
       />
-      {addSubmit && <button onClick={toggle}>+</button>}
+      {config && <button onClick={toggle}>+</button>}
     </div>
   )
 }
